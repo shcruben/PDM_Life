@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.iteso.ruben.proyectoversion1.ActivityWater">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView_water"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressBar1"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <ProgressBar
+                android:id="@+id/progressBar_water"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="@dimen/circleDim"
+                android:layout_height="@dimen/circleDim"
+                android:layout_centerHorizontal="true"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="1"
+                android:progressDrawable="@drawable/style_circle_fill"
+                android:secondaryProgress="10" />
+
+            <TextView
+                android:id="@+id/text_waterprogr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_water_progress_margin_top"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        </RelativeLayout>
+
+
+
+        <Button
+            android:id="@+id/myDrink_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="150dp"
+            android:text="One Glass" />
+
+        <Button
+            android:id="@+id/activity_main_back_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="BACK" />
+
+    </LinearLayout>
+
+</RelativeLayout>

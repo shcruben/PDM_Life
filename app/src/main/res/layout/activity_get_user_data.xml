@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light"
+    tools:context="com.iteso.ruben.proyectoversion1.ActivityGetUserDAta">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert weight"
+            android:textSize="25sp"
+            />
+
+        <NumberPicker
+            android:id="@+id/weight_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/numberPickerStyle"
+            android:scaleX="0.8"
+            android:scaleY="0.6">
+
+        </NumberPicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert height"
+            android:textSize="25sp"/>
+
+        <NumberPicker
+            android:id="@+id/height_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/numberPickerStyle"
+            android:scaleX="0.8"
+            android:scaleY="0.6">
+
+        </NumberPicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert your age"
+            android:textSize="25sp"/>
+
+        <NumberPicker
+            android:id="@+id/age_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/numberPickerStyle"
+            android:scaleX="0.8"
+            android:scaleY="0.6">
+
+        </NumberPicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert your wake up time"
+            android:textSize="25sp"/>
+
+        <TimePicker
+            android:id="@+id/waketime_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            >
+
+        </TimePicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert your level of exercise"
+            android:textSize="25sp"/>
+
+        <NumberPicker
+            android:id="@+id/exercise_level_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/numberPickerStyle"
+            android:scaleX="0.8"
+            android:scaleY="0.6">
+
+        </NumberPicker>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="25sp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/activity_get_user_data_gender_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Woman"
+                android:onClick="onClickGender"/>
+
+            <RadioButton
+                android:id="@+id/activity_get_user_data_gender_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:onClick="onClickGender"/>
+
+        </RadioGroup>
+        <Button
+            android:id="@+id/save_user_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

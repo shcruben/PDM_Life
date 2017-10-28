@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.iteso.ruben.proyectoversion1.ActivityHome">
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/wp"
+        android:scaleType="centerCrop"
+        />
+
+    <ImageView
+        android:id="@+id/happy_hamtaro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/happy"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="30dp"
+        android:scaleX=".6"
+        android:scaleY=".6"
+
+        android:scaleType="centerCrop"
+        />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_achievement"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="180dp"
+        android:src="@android:drawable/ic_menu_manage"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorA1"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_floating1"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="180dp"
+        android:layout_marginRight="30dp"
+        android:src="@android:drawable/ic_dialog_map"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorFAB1"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_floating2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin3"
+        android:layout_marginRight="@dimen/fab_margin3"
+        android:src="@android:drawable/ic_dialog_dialer"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorA1"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_coordinator_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginRight="@dimen/text_margin"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@android:color/holo_blue_light"
+        app:useCompatPadding="false" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_floating3"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin4"
+        android:layout_marginRight="@dimen/fab_margin2"
+        android:src="@android:drawable/ic_dialog_dialer"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorA2"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_floating4"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin2"
+        android:layout_marginRight="@dimen/fab_margin4"
+        android:src="@android:drawable/ic_dialog_dialer"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorFAB2"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>

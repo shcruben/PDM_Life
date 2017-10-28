@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProyectoVersion1</string>
+    <string name="water_progress_complete_message">Congratulations!</string>
+    <string name="water_progress_incomplete_message">Don´t give up!</string>
+    <string name="hours_of_sleep_text">Hours of sleep</string>
+    <string-array name="Exercise_level">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_vertical_margin">20sp</dimen>
+    <dimen name="activity_horizontal_margin">10sp</dimen>
+    <dimen name="fab_margin">30dp</dimen>
+    <dimen name="fab_margin2">87dp</dimen>
+    <dimen name="fab_margin3">136dp</dimen>
+    <dimen name="fab_margin4">168dp</dimen>
+    <dimen name="fab_margin5">130dp</dimen>
+    <dimen name="circleDim">200dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="app_bar_height2">128dp</dimen>
+    <dimen name="text_margin">30dp</dimen>
+    <dimen name="text_water_progress_margin_top">90dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="text_SIZE">40dp</dimen>
+</resources>

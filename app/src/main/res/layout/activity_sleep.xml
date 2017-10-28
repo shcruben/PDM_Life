@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sleep_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.iteso.ruben.proyectoversion1.ActivitySleep">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sky"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView_sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar1"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="@string/hours_of_sleep_text"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_text_size"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+         <RelativeLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+
+             <ProgressBar
+                 android:id="@+id/progressBar_sleep"
+                 style="?android:attr/progressBarStyleHorizontal"
+                 android:layout_width="@dimen/circleDim"
+                 android:layout_height="@dimen/circleDim"
+                 android:layout_centerHorizontal="true"
+                 android:indeterminate="false"
+                 android:max="100"
+                 android:progress="1"
+                 android:progressDrawable="@drawable/style_circle_fill"
+                 android:secondaryProgress="10" />
+
+             <TextView
+                 android:id="@+id/text_sleeprogr"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerHorizontal="true"
+                 android:layout_marginTop="90dp"
+                 android:textColor="@color/white"
+                 android:textAppearance="?android:attr/textAppearanceSmall" />
+
+         </RelativeLayout>
+
+    <NumberPicker
+        android:id="@+id/sleep_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/NumberPicker1"
+        android:scaleX="1"
+        android:scaleY="1">
+
+    </NumberPicker>
+
+    <Button
+        android:id="@+id/load_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="START" />
+
+    <Button
+        android:id="@+id/activity_main_back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="BACK" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
