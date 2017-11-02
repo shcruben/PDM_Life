@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ public class ActivityWater extends AppCompatActivity {
 
     public TextView tv, tv_left;
     public ProgressBar pBar;
-    protected Button back_button;
+    protected ImageButton back_button;
     protected Button myDrink_button;
     int pStatus = 0;
     static int myProgressMl = 0;
@@ -34,7 +35,7 @@ public class ActivityWater extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.textView_water);
         pBar = (ProgressBar) findViewById(R.id.progressBar_water);
-        back_button = (Button) findViewById(R.id.activity_main_back_button);
+        back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
 
