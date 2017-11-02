@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class ActivitySleep extends AppCompatActivity {
 
     public TextView tv;
     public ProgressBar pBar;
-    protected Button back_button;
+    protected ImageButton back_button;
     protected Button load_button;
     int pStatus = 0;
     int MaxSleep = 12;
@@ -34,7 +35,7 @@ public class ActivitySleep extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.text_sleeprogr);
         pBar = (ProgressBar) findViewById(R.id.progressBar_sleep);
         realSleep = (NumberPicker) findViewById(R.id.sleep_input);
-        back_button = (Button) findViewById(R.id.activity_main_back_button);
+        back_button = (ImageButton) findViewById(R.id.activity_sleep_back_button);
         load_button = (Button) findViewById(R.id.load_button);
 
         realSleep.setMinValue(0);

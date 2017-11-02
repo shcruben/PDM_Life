@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.iteso.ruben.proyectoversion1.beans.Constants;
@@ -17,6 +19,7 @@ import java.util.zip.Inflater;
 public class ActivityDummy extends AppCompatActivity {
 
     TextView textView;
+    protected ImageButton back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +27,20 @@ public class ActivityDummy extends AppCompatActivity {
         setContentView(R.layout.activity_dummy);
 
         textView = (TextView)findViewById(R.id.dummy_textview);
-
+        back_button = (ImageButton) findViewById(R.id.activity_dummy_back_button);
         UserData myUser = loadPreferences();
 
         textView.setText(myUser.toString());
+
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent select_intent = new Intent(ActivityWater.this, ActivityHome.class);
+                //startActivity(select_intent);
+                finish();
+            }
+        });
 
     }
     public UserData loadPreferences(){
