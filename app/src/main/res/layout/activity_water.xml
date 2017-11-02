@@ -2,21 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/water_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/water"
     tools:context="com.iteso.ruben.proyectoversion1.ActivityWater">
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/activity_water_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/green_arrow" />
+  <!--  <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/water"/>
+        android:src="@drawable/water"/> -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="54dp">
 
         <TextView
             android:id="@+id/textView_water"
@@ -42,9 +54,9 @@
                 android:layout_centerHorizontal="true"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="1"
+                android:progress="0"
                 android:progressDrawable="@drawable/style_circle_fill"
-                android:secondaryProgress="10" />
+                android:secondaryProgress="1" />
 
             <TextView
                 android:id="@+id/text_waterprogr"
@@ -59,22 +71,20 @@
         </RelativeLayout>
 
 
-
         <Button
             android:id="@+id/myDrink_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="center"
             android:layout_marginTop="150dp"
-            android:text="One Glass" />
+            android:background="@drawable/button_selector"
+            android:text="One Glass"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/activity_main_back_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="BACK" />
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

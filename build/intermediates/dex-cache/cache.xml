@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/ruben/AndroidStudioProjects/PDM_ProyectoFinal-LizzyDev/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="3a03c8656f7dd31406631ed44bd0b7b86958b209">
-        <dex dex="/home/ruben/AndroidStudioProjects/PDM_ProyectoFinal-LizzyDev/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f501e18efc21a05a97303eccc888ff4e4c2502e1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/ruben/AndroidStudioProjects/PDM_ProyectoFinal-LizzyDev/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/Elizabeth/Documents/Life_Project/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/home/ruben/AndroidStudioProjects/PDM_ProyectoFinal-LizzyDev/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_25f300390d721ad47aa612503ccca56756f3f456/classes.dex" />
+        <dex dex="/Users/Elizabeth/Documents/Life_Project/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7bd2e3c17a2a1245a02785eb4f9fdd45edb199e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Elizabeth/Documents/Life_Project/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5e9f65ca1fe4a84e58e09862299e6700ccffdc8d">
+        <dex dex="/Users/Elizabeth/Documents/Life_Project/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6f5718759ebd2cb81615b835efd016367c5c9f73/classes.dex" />
     </item>
 
 </items>

@@ -113,6 +113,16 @@ public class ActivityHome extends AppCompatActivity {
 
             }
         });
+        fab4.bringToFront();
+        fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityHome.this, ActivityAchievement.class);
+                //intent.putExtra("USER", myUser);
+                startActivity(intent);
+
+            }
+        });
 
 
       /*  floatingActionButton.setOnClickListener(new View.OnClickListener() {
