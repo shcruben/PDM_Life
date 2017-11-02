@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoVersion1</string>
+    <string name="app_name">Life++</string>
     <string name="water_progress_complete_message">Congratulations!</string>
     <string name="water_progress_incomplete_message">Don´t give up!</string>
     <string name="hours_of_sleep_text">Hours of sleep</string>
@@ -7,5 +7,12 @@
         <item>High</item>
         <item>Medium</item>
         <item>Low</item>
+    </string-array>
+
+    <string-array name="myGoals">
+        <item>Complete water intake for a day</item>
+        <item>Nice sleep</item>
+        <item>week water streak </item>
+        <item>week sleep streak </item>
     </string-array>
 </resources>
