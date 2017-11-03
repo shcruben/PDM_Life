@@ -127,6 +127,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector"
             android:text="Save"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             />
 
 

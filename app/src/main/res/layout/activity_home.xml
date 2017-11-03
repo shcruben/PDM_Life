@@ -16,19 +16,9 @@
         android:scaleType="centerCrop"
         />
 
-    <ImageView
-        android:id="@+id/happy_hamtaro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/happy"
-        android:layout_marginTop="280dp"
-        android:layout_marginLeft="30dp"
-        android:scaleX=".6"
-        android:scaleY=".6"
 
-        android:scaleType="centerCrop"
-        />
-
+    <!--android:layout_marginTop="280dp"
+         android:layout_marginLeft="30dp" -->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/activity_achievement"
@@ -113,5 +103,15 @@
         app:backgroundTint="@color/colorFAB2"
         />
 
+    <ImageView
+        android:id="@+id/happy_hamtaro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/happy"
+        android:layout_gravity="bottom"
+        android:scaleX=".6"
+        android:scaleY=".6"
+        android:scaleType="centerCrop"
+        />
 
 </android.support.design.widget.CoordinatorLayout>
