@@ -3,17 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.iteso.ruben.proyectoversion1.ActivityDummy"
-    android:gravity="center"
+    android:orientation="vertical"
     android:background="@drawable/achievement_im">
-
-    <TextView
+    <ImageButton
+        android:id="@+id/activity_dummy_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/arrow_sel"
+        />
+   <TextView
         android:id="@+id/dummy_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="@dimen/text_SIZE"/>
+    <!--
+    <ListView
+        android:id="@+id/dummy_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideInset"
+        android:divider="#00f"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:dividerHeight="1dp"
+        android:listSelector="#aaff"
+        android:drawSelectorOnTop="false"
+        android:descendantFocusability="blocksDescendants"/> -->
+
+    <Button
+        android:id="@+id/see_user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"/>
 
 </LinearLayout>

@@ -8,4 +8,5 @@
     <color name="colorA1">#439ed3</color>
     <color name="colorA2">#f27041</color>
     <color name="white">#ffffff</color>
+    <color name="transparent">#0fff</color>
 </resources>

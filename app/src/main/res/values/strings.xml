@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoVersion1</string>
+    <string name="app_name">Life++</string>
     <string name="water_progress_complete_message">Congratulations!</string>
     <string name="water_progress_incomplete_message">Don´t give up!</string>
     <string name="hours_of_sleep_text">Hours of sleep</string>
@@ -8,4 +8,35 @@
         <item>Medium</item>
         <item>Low</item>
     </string-array>
+
+    <string-array name="myGoals">
+        <item>Complete water intake for a day</item>
+        <item>Nice sleep</item>
+        <item>week water streak </item>
+        <item>week sleep streak </item>
+        <item>Enough steps for a day </item>
+        <item>Enough steps for a week </item>
+    </string-array>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Live happier!</string>
+    <string name="slide_1_desc">The easiest way to be healthy and happy with the best pal!</string>
+
+    <string name="slide_2_title">Water intake</string>
+    <string name="slide_2_desc">We will tell you how much water you need per day.</string>
+
+    <string name="slide_3_title">Day and night</string>
+    <string name="slide_3_desc">Using your UP fitness tracker to monitor your steps and sleep cycles </string>
+
+    <string name="slide_4_title">Heart Monitor</string>
+    <string name="slide_4_desc">Use the camera to monitor your heart rate.</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+    <string name="press_button_to_connect">Press button to connect</string>
+
 </resources>

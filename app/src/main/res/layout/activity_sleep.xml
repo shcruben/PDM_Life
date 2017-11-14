@@ -14,6 +14,15 @@
         android:scaleType="centerCrop"
         android:src="@drawable/sky"/>
 
+    <ImageButton
+        android:id="@+id/activity_sleep_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/arrow_sel"
+         />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -71,17 +80,13 @@
 
     <Button
         android:id="@+id/load_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="START" />
-
-    <Button
-        android:id="@+id/activity_main_back_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="BACK" />
+        android:layout_gravity="center"
+        android:background="@drawable/button_selector"
+        android:text="START"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
     </LinearLayout>
 
