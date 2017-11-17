@@ -20,6 +20,9 @@ public class UserData implements Parcelable {
 
     private float weight;
     private float height;
+    private int waterDrank;
+    private int mood;
+    private long date;
     private int age;
     private int wakeuptime_hrs, wakeuptime_min;
     private int levelOfExcercise;
@@ -53,6 +56,9 @@ public class UserData implements Parcelable {
         levelOfExcercise = in.readInt();
         wakeuptime_hrs = in.readInt();
         wakeuptime_min = in.readInt();
+        waterDrank = in.readInt();
+        date = in.readLong();
+        mood = in.readInt();
         isLogged = in.readByte() != 0;;
         mGender = in.readByte() != 0;
     }
@@ -131,6 +137,9 @@ public class UserData implements Parcelable {
         parcel.writeInt(levelOfExcercise);
         parcel.writeInt(wakeuptime_hrs);
         parcel.writeInt(wakeuptime_min);
+        parcel.writeInt(waterDrank);
+        parcel.writeLong(date);
+        parcel.writeInt(mood);
         parcel.writeByte((byte)(isLogged?1:0));
         parcel.writeByte((byte)(mGender?1:0));
     }

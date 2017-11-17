@@ -1,6 +1,8 @@
 package com.iteso.ruben.proyectoversion1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -13,6 +15,14 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.iteso.ruben.proyectoversion1.beans.Constants;
+
+import java.time.DayOfWeek;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class ActivityWater extends AppCompatActivity {
 
     public TextView tv, tv_left;
@@ -20,10 +30,11 @@ public class ActivityWater extends AppCompatActivity {
     protected ImageButton back_button;
     protected Button myDrink_button;
     int pStatus = 0;
-    static int myProgressMl = 0;
-    final static int topMl = 2000;
+    private int myProgressMl = 0;
+    private double weight = 0;
+    private int age = 0;
+    private int topMl = 2000;
     final static int glasspMl = 250;
-
     boolean flag = false;
     protected Handler handler = new Handler();
 
@@ -33,6 +44,10 @@ public class ActivityWater extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
+
+        weight = Double.parseDouble(sharedPreferences.getString("weight", "80.66"));
+        age = Integer.parseInt(sharedPreferences.getString("age", "50"));
         tv = (TextView) findViewById(R.id.textView_water);
         pBar = (ProgressBar) findViewById(R.id.progressBar_water);
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
@@ -40,6 +55,11 @@ public class ActivityWater extends AppCompatActivity {
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
 
 
+
+
+        topMl = (int) (weight * (age < 30 ? 0.03 :
+                                age < 55 ? 0.025:
+                                0.02 ) * 1000.0);
 
         pBar.setProgress(0);
         myDrink_button.setOnClickListener(new Button.OnClickListener() {
@@ -70,6 +90,12 @@ public class ActivityWater extends AppCompatActivity {
         UpdateProgress pBarProgress = new UpdateProgress();
         pBarProgress.setEnteringActivity(true);
         pBarProgress.execute(myProgressMl);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
     }
 

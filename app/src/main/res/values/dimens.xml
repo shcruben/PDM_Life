@@ -13,5 +13,5 @@
     <dimen name="text_margin">30dp</dimen>
     <dimen name="text_water_progress_margin_top">90dp</dimen>
     <dimen name="title_text_size">20sp</dimen>
-    <dimen name="text_SIZE">40dp</dimen>
+    <dimen name="text_SIZE">40sp</dimen>
 </resources>

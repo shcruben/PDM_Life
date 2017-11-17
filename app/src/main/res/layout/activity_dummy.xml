@@ -13,15 +13,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:backgroundTint="@color/transparent"
-        android:src="@drawable/green_arrow" />
-    <TextView
+        android:background="@drawable/arrow_sel"
+        />
+   <TextView
         android:id="@+id/dummy_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="@dimen/text_SIZE"/>
+    <!--
+    <ListView
+        android:id="@+id/dummy_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideInset"
+        android:divider="#00f"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:dividerHeight="1dp"
+        android:listSelector="#aaff"
+        android:drawSelectorOnTop="false"
+        android:descendantFocusability="blocksDescendants"/> -->
 
+    <Button
+        android:id="@+id/see_user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"/>
 
 </LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:state_focused="true" android:state_pressed="true"
+        android:drawable="@drawable/pressed_button" />
+    <item android:state_focused="false" android:state_pressed="true"
+        android:drawable="@drawable/pressed_button" />
+    <item android:drawable="@drawable/normal_button" /> </selector>  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:state_focused="true" android:state_pressed="true"
+        android:drawable="@drawable/green_arrow" />
+    <item android:state_focused="false" android:state_pressed="true"
+        android:drawable="@drawable/yellow_arrow" />
+    <item android:drawable="@drawable/green_arrow" /> </selector>

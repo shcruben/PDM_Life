@@ -80,7 +80,7 @@ public class ActivityMain extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.activity_main_menu_settings:
                 //:V
-                Intent intent = new Intent(this,ActivitySettings.class );
+                Intent intent = new Intent(this,ActivityJawbone.class );
                 break;
         }
 //
