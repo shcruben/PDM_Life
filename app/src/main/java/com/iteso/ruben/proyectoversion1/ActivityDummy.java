@@ -3,7 +3,10 @@ package com.iteso.ruben.proyectoversion1;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +23,10 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.iteso.ruben.proyectoversion1.beans.Constants;
 import com.iteso.ruben.proyectoversion1.beans.UserData;
 import com.jawbone.upplatformsdk.api.ApiManager;
+import com.jawbone.upplatformsdk.datamodel.Meta;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
@@ -48,8 +53,6 @@ public class ActivityDummy extends AppCompatActivity {
     protected ImageButton back_button;
     protected Button see_user;
 
-    JSONObject jsonObj;
-    String jsonStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +76,6 @@ public class ActivityDummy extends AppCompatActivity {
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
 
-        ApiManager.getRestApiInterface().getUser(
-                UpPlatformSdkConstants.API_VERSION_STRING,
-                genericCallbackListener);
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +92,6 @@ public class ActivityDummy extends AppCompatActivity {
                 ApiManager.getRestApiInterface().getUser(
                         UpPlatformSdkConstants.API_VERSION_STRING,
                         genericCallbackListener);
-             //   Intent select_intent = new Intent(ActivityDummy.this, ActivityHome.class);
-              //  startActivity(select_intent);
-                finish();
             }
         });
 
@@ -120,14 +117,32 @@ public class ActivityDummy extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void clearPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
                 Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear().apply();
+        editor.clear().commit();
 
-        Intent intent = new Intent(this, ActivitySplash.class);
+        try {
+            Context context = createPackageContext("com.jawbone.helloup",CONTEXT_INCLUDE_CODE|Context.CONTEXT_IGNORE_SECURITY);
+            SharedPreferences myGod = PreferenceManager.getDefaultSharedPreferences(context);
+            myGod.edit().clear().commit();
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }catch (SecurityException e){
+            e.printStackTrace();
+        }
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDummy.this);
+        SharedPreferences.Editor editor2 = sharedPreferences.edit();
+        editor2.remove(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN);
+        editor2.remove(UpPlatformSdkConstants.UP_PLATFORM_REFRESH_TOKEN);
+        editor2.clear().commit();
+
+        Intent intent = new Intent(this, HelloUpActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
@@ -140,33 +155,20 @@ public class ActivityDummy extends AppCompatActivity {
     private Callback genericCallbackListener = new Callback<Object>()  {
         @Override
             public void success(Object o, Response response) {
+
+            LinkedTreeMap<String, LinkedTreeMap> mapa = (LinkedTreeMap) o;
+            LinkedTreeMap<String,String> data = mapa.get("data");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("First name: " + data.get("first") + "\n");
+            stringBuilder.append("Last name: " + data.get("last") + "\n" + "");
+
+            stringBuilder.append( String.valueOf(data.get("weight")) + "\n");
+            stringBuilder.append( String.valueOf(data.get("height")) + "\n");
+
             Log.e(TAG,  "api call successful, json output: " + o.toString().substring(91,117));
-            Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
-            //textView.setText(o.toString().substring(91,117));
-            //textView.setText(o.toString().substring(118,130));
-            //textView.setText(o.toString().substring(132,143));//gender true==female
-            //textView.setText(o.toString().substring(153,164));
-            //textView.setText(o.toString().substring(166,176));
-            //textView.setText(o.toString().substring(177,189));
+            Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_LONG).show();
 
-
-                id = ( o.toString().substring(91,117)+"\n" );
-                first_name = (o.toString().substring(177,189)+"\n" );
-                last_name = (o.toString().substring(166,176)+"\n" );
-              //  image = o.getString("image");
-                weight = (o.toString().substring(118,130)+"\n" );
-                height = (o.toString().substring(153,164)+"\n" );
-                gender = (o.toString().substring(139,143)=="false")?"male"+"\n":"female"+"\n";
-                 ArrayList <String>myUserUp = new ArrayList<String>();
-                myUserUp.add(id);
-                myUserUp.add(first_name);
-                myUserUp.add(last_name);
-               // myUserUp.add(image);
-                myUserUp.add(gender);
-                myUserUp.add(weight);
-                myUserUp.add(height);
-
-                textView.setText(myUserUp.toString());
+            textView.setText(stringBuilder.toString());
 
        }
 

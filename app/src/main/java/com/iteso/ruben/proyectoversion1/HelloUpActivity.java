@@ -1,3 +1,8 @@
+/**
+ * @author Omer Muhammed
+ * Copyright 2014 (c) Jawbone. All rights reserved.
+ *
+ */
 package com.iteso.ruben.proyectoversion1;
 
 import android.app.Activity;
@@ -6,9 +11,9 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 
@@ -25,13 +30,16 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+/**
+ * Main activity of the Hello Up test app, it makes the OAuth API
+ * call and obtains the access token.
+ */
+public class HelloUpActivity extends Activity {
 
-public class ActivityJawbone extends AppCompatActivity {
-
-
-    private static final String TAG = ActivityJawbone.class.getSimpleName();
+    private static final String TAG = HelloUpActivity.class.getSimpleName();
 
     private static final int OAUTH_REQUEST_CODE = 25;
+
 
     // These are obtained after registering on Jawbone Developer Portal
     // Credentials used here are created for "Test-App1"
@@ -39,16 +47,29 @@ public class ActivityJawbone extends AppCompatActivity {
     private static final String CLIENT_SECRET = "6e403a5ba4c60e438f03cd71e482e13228af6ba0";
 
     // This has to be identical to the OAuth redirect url setup in Jawbone Developer Portal
-    private static final String OAUTH_CALLBACK_URL = "http://beaconio.com/privacy.php";
+    private static final String OAUTH_CALLBACK_URL = "http://localhost/helloup?";//"http://beaconio.com/privacy.php";
 
     private List<UpPlatformSdkConstants.UpPlatformAuthScope> authScope;
+
+    String mAccessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.activity_jawbone);
+        setContentView(R.layout.hello_up);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HelloUpActivity.this);
+        mAccessToken = preferences.getString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, null);
+
+        if (mAccessToken != null) {
+            Intent intent = new Intent(HelloUpActivity.this, ActivityDummy.class);
+            intent.putExtra(UpPlatformSdkConstants.CLIENT_SECRET, CLIENT_SECRET);
+            startActivity(intent);
+        }
+
+
 
         // Set required levels of permissions here, for demonstration purpose
         // we are requesting all permissions
@@ -56,11 +77,11 @@ public class ActivityJawbone extends AppCompatActivity {
         authScope.add(UpPlatformSdkConstants.UpPlatformAuthScope.ALL);
 
         Button oAuthAuthorizeButton = (Button) findViewById(R.id.authorizeButton);
-        oAuthAuthorizeButton.setOnClickListener(new View.OnClickListener() {
+        oAuthAuthorizeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntentForWebView();
-                startActivityForResult(intent, OAUTH_REQUEST_CODE);
+            Intent intent = getIntentForWebView();
+            startActivityForResult(intent, OAUTH_REQUEST_CODE);
             }
         });
     }
@@ -84,20 +105,20 @@ public class ActivityJawbone extends AppCompatActivity {
             }
         }
 
-    }
+   }
 
     private Callback accessTokenRequestListener = new Callback<OauthAccessTokenResponse>() {
         @Override
         public void success(OauthAccessTokenResponse result, Response response) {
 
             if (result.access_token != null) {
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(ActivityJawbone.this);
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HelloUpActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, result.access_token);
                 editor.putString(UpPlatformSdkConstants.UP_PLATFORM_REFRESH_TOKEN, result.refresh_token);
                 editor.commit();
 
-                Intent intent = new Intent(ActivityJawbone.this, ActivityDummy.class);
+                Intent intent = new Intent(HelloUpActivity.this, ActivityDummy.class);
                 intent.putExtra(UpPlatformSdkConstants.CLIENT_SECRET, CLIENT_SECRET);
                 startActivity(intent);
 
@@ -120,5 +141,4 @@ public class ActivityJawbone extends AppCompatActivity {
         intent.putExtra(UpPlatformSdkConstants.AUTH_URI, builder.build());
         return intent;
     }
-
 }
