@@ -29,6 +29,7 @@ import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.zip.Inflater;
 
 import retrofit.Callback;
@@ -106,6 +107,7 @@ public class ActivityDummy extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -117,7 +119,7 @@ public class ActivityDummy extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+  //  @RequiresApi(api = Build.VERSION_CODES.N)
     protected void clearPreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
                 Context.MODE_PRIVATE);
@@ -164,7 +166,9 @@ public class ActivityDummy extends AppCompatActivity {
 
             stringBuilder.append( String.valueOf(data.get("weight")) + "\n");
             stringBuilder.append( String.valueOf(data.get("height")) + "\n");
-
+            long epoch = (System.currentTimeMillis());
+            Date today = new Date(epoch);
+            stringBuilder.append( "TIME: " + today.toString() );
             Log.e(TAG,  "api call successful, json output: " + o.toString().substring(91,117));
             Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_LONG).show();
 

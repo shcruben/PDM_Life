@@ -112,5 +112,6 @@
     <orderEntry type="library" name="com.squareup.retrofit:retrofit:1.9.0@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.7.5@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okio:okio:1.7.0@jar" level="project" />
+    <orderEntry type="library" name="android-android-26" level="project" />
   </component>
 </module>

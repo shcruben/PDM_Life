@@ -64,7 +64,7 @@ public class HelloUpActivity extends Activity {
         mAccessToken = preferences.getString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, null);
 
         if (mAccessToken != null) {
-            Intent intent = new Intent(HelloUpActivity.this, ActivityDummy.class);
+            Intent intent = new Intent(HelloUpActivity.this, ActivityHome.class);
             intent.putExtra(UpPlatformSdkConstants.CLIENT_SECRET, CLIENT_SECRET);
             startActivity(intent);
         }
@@ -118,7 +118,7 @@ public class HelloUpActivity extends Activity {
                 editor.putString(UpPlatformSdkConstants.UP_PLATFORM_REFRESH_TOKEN, result.refresh_token);
                 editor.commit();
 
-                Intent intent = new Intent(HelloUpActivity.this, ActivityDummy.class);
+                Intent intent = new Intent(HelloUpActivity.this, ActivityGetUserDAta.class);
                 intent.putExtra(UpPlatformSdkConstants.CLIENT_SECRET, CLIENT_SECRET);
                 startActivity(intent);
 

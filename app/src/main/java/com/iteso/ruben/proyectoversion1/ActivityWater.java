@@ -35,6 +35,7 @@ public class ActivityWater extends AppCompatActivity {
     private int age = 0;
     private int topMl = 2000;
     final static int glasspMl = 250;
+    private long lastConnection;
     boolean flag = false;
     protected Handler handler = new Handler();
 
@@ -45,6 +46,12 @@ public class ActivityWater extends AppCompatActivity {
         setContentView(R.layout.activity_water);
 
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
+        myProgressMl =   sharedPreferences.getInt("waterDrank",myProgressMl );
+        lastConnection = sharedPreferences.getLong("lastConnection",lastConnection );
+
+        if(isDiffDay(lastConnection, System.currentTimeMillis())){
+            myProgressMl = 0;
+        }
 
         weight = Double.parseDouble(sharedPreferences.getString("weight", "80.66"));
         age = Integer.parseInt(sharedPreferences.getString("age", "50"));
@@ -53,6 +60,7 @@ public class ActivityWater extends AppCompatActivity {
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
+
 
 
 
@@ -97,8 +105,34 @@ public class ActivityWater extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(Constants.USER_PREFRENCES,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("waterDrank", myProgressMl);
+        editor.putLong("lastConnection",System.currentTimeMillis());
+        editor.commit();
+
+
     }
 
+    static int dayOfMonth( long epoch ){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(epoch);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        return day;
+    }
+
+    static boolean isDiffDay(long epoch1, long epoch2){
+
+        int day1 = dayOfMonth(epoch1);
+        int day2 = dayOfMonth(epoch2);
+
+        return (day1 != day2);
+
+    }
     class UpdateProgress extends AsyncTask<Integer, Integer, Void> {
         int progress;
         boolean isEnteringActivity;

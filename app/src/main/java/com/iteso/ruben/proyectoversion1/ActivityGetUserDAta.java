@@ -65,6 +65,9 @@ public class ActivityGetUserDAta extends AppCompatActivity {
                 myUser.setWakeuptime_min(wakeUp.getMinute());
                 myUser.setLevelOfExcercise(levelExercise.getValue());
                 myUser.setLogged(true);
+                myUser.setWaterDrank(0);
+                myUser.setMood(0);
+                myUser.setlastConnection( System.currentTimeMillis());
                 Intent intent = new Intent(ActivityGetUserDAta.this, ActivityHome.class);
                 intent.putExtra("USER", myUser);
                 myUser.savePreferences(ActivityGetUserDAta.this);
