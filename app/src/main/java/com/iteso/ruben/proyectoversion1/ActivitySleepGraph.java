@@ -1,9 +1,9 @@
 package com.iteso.ruben.proyectoversion1;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,7 +19,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class ActivityMove extends AppCompatActivity {
+public class ActivitySleepGraph extends AppCompatActivity {
 
     private String mAccessToken;
     private ImageButton back_button;
@@ -27,7 +27,7 @@ public class ActivityMove extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_move);
+        setContentView(R.layout.activity_sleep_graph);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         mAccessToken = preferences.getString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, null);
@@ -36,10 +36,10 @@ public class ActivityMove extends AppCompatActivity {
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
 
-        ApiManager.getRestApiInterface().getMoveEventsList(
+        ApiManager.getRestApiInterface().getSleepEventsList(
                 UpPlatformSdkConstants.API_VERSION_STRING,
                 null,
-                MoveEventListCallbackListener);
+                sleepEventListCallbackListener);
 
         back_button = (ImageButton) findViewById(R.id.activity_sleep_graph_back_button);
 
@@ -50,9 +50,10 @@ public class ActivityMove extends AppCompatActivity {
             }
         });
 
+
     }
 
-    private Callback MoveEventListCallbackListener = new Callback<Object>() {
+    private Callback sleepEventListCallbackListener = new Callback<Object>() {
         @Override
         public void success(Object o, Response response) {
             Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();

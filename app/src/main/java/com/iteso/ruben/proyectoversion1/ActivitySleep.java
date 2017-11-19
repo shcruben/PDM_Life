@@ -1,5 +1,6 @@
 package com.iteso.ruben.proyectoversion1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -33,6 +34,7 @@ public class ActivitySleep extends AppCompatActivity {
     public TextView tv;
     public ProgressBar pBar;
     protected ImageButton back_button;
+    protected ImageButton graphButton;
     protected Button load_button;
     private  boolean isSleepRegistered;
     private long wakeUpTime;
@@ -73,11 +75,23 @@ public class ActivitySleep extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.text_sleeprogr);
         pBar = (ProgressBar) findViewById(R.id.progressBar_sleep);
         back_button = (ImageButton) findViewById(R.id.activity_sleep_back_button);
+        graphButton = (ImageButton) findViewById(R.id.activity_sleep_graph);
         load_button = (Button) findViewById(R.id.load_button);
         age = sharedPreferences.getInt("age", 23);
         load_button.setText(isSleepRegistered ? "Stop Sleeping" : "Start Sleeping");
 
         pBar.setProgress(0);
+
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivitySleep.this, ActivitySleepGraph.class);
+
+                startActivity(intent);
+
+            }
+        });
+
         load_button.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View arg0) {

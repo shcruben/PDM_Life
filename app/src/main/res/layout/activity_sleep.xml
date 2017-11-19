@@ -22,6 +22,16 @@
         android:background="@drawable/arrow_sel"
          />
 
+    <ImageButton
+        android:id="@+id/activity_sleep_graph"
+        android:layout_width="75dp"
+        android:layout_height="55dp"
+        android:layout_gravity="start"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/graph_ico" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +50,10 @@
         android:textStyle="bold"
         android:textSize="@dimen/title_text_size"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-         <RelativeLayout
+
+
+
+        <RelativeLayout
              android:layout_width="wrap_content"
              android:layout_height="wrap_content">
 
@@ -70,6 +83,7 @@
 
 
 
+
     <Button
         android:id="@+id/load_button"
         android:layout_width="wrap_content"
@@ -79,6 +93,7 @@
         android:text="START"
         android:textColor="@color/white"
         android:textStyle="bold"/>
+
 
     </LinearLayout>
 
