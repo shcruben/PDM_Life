@@ -90,6 +90,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes-jar" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-runtime-classes" />
@@ -148,6 +149,5 @@
     <orderEntry type="library" name="com.squareup.retrofit:retrofit:1.9.0@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.7.5@jar" level="project" />
     <orderEntry type="module" module-name="UpPlatformSdk" />
-    <orderEntry type="library" name="android-android-26" level="project" />
   </component>
 </module>

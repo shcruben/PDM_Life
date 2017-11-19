@@ -1,9 +1,10 @@
 package com.iteso.ruben.proyectoversion1;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +13,35 @@ import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import static com.iteso.ruben.proyectoversion1.R.id.load_button;
+import com.iteso.ruben.proyectoversion1.beans.Constants;
+import com.jawbone.upplatformsdk.api.ApiManager;
+import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.TimeZone;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class ActivitySleep extends AppCompatActivity {
 
+    private String mAccessToken;
     public TextView tv;
     public ProgressBar pBar;
     protected ImageButton back_button;
     protected Button load_button;
+    private  boolean isSleepRegistered;
+    private long wakeUpTime;
+    private SharedPreferences sharedPreferences;
+    private long sleepTime;
     int pStatus = 0;
     int MaxSleep = 12;
     boolean flag = false;
+    private long lastConnection;
     protected Handler handler = new Handler();
     public NumberPicker realSleep;
 
@@ -32,22 +50,66 @@ public class ActivitySleep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
 
+        sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
+                MODE_PRIVATE);
+
+        isSleepRegistered = sharedPreferences.getBoolean("sleepRegistered", false);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mAccessToken = preferences.getString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, null);
+
+        if (mAccessToken != null) {
+            ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
+        }
+
+
+        if(isDiffDay(lastConnection, System.currentTimeMillis())){
+            //myProgressMl = 0;
+        }
+
+
+
         tv = (TextView) findViewById(R.id.text_sleeprogr);
         pBar = (ProgressBar) findViewById(R.id.progressBar_sleep);
-        realSleep = (NumberPicker) findViewById(R.id.sleep_input);
         back_button = (ImageButton) findViewById(R.id.activity_sleep_back_button);
         load_button = (Button) findViewById(R.id.load_button);
 
-        realSleep.setMinValue(0);
-        realSleep.setMaxValue(12);
-        realSleep.setValue(8);
+        load_button.setText(isSleepRegistered ? "Stop Sleeping" : "Start Sleeping");
 
         pBar.setProgress(0);
         load_button.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                load_button.setClickable(false);
-                new UpdateProgress().execute(realSleep.getValue());
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                if(isSleepRegistered) {
+                    load_button.setText("Start sleeping");
+                    editor.putBoolean("sleepRegistered", false);
+
+                    wakeUpTime = System.currentTimeMillis()/1000;
+                    sleepTime = sharedPreferences.getLong("timeOfSleep",
+                            sleepTime);
+
+                    editor.putLong("timeOfWakeUp", wakeUpTime);
+
+                    ApiManager.getRestApiInterface().createSleepEvent(
+                            UpPlatformSdkConstants.API_VERSION_STRING,
+                            getCreateSleepEventRequestParams(),
+                            genericCallbackListener
+                    );
+
+                    isSleepRegistered = false;
+                    editor.commit();
+                    //new UpdateProgress().execute();
+                }else {
+                    load_button.setText("Stop sleeping");
+                    sleepTime = System.currentTimeMillis()/1000;
+                    editor.putLong("timeOfSleep", sleepTime);
+                    editor.putBoolean("sleepRegistered", true);
+                    editor.commit();
+                    isSleepRegistered = true;
+                }
             }
         });
 
@@ -56,11 +118,38 @@ public class ActivitySleep extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent select_intent = new Intent(ActivitySleep.this, ActivityHome.class);
-                //startActivity(select_intent);
                 finish();
             }
         });
+
+    }
+
+    private HashMap<String,Object> getCreateSleepEventRequestParams() {
+        HashMap<String, Object> queryHashMap = new HashMap<String, Object>();
+        queryHashMap.put("time_created",  sleepTime);
+        queryHashMap.put("time_completed", wakeUpTime);
+        TimeZone timeZone = TimeZone.getDefault();
+        queryHashMap.put("tz",  timeZone.getID());
+        queryHashMap.put("share" , false);
+        return queryHashMap;
+    }
+
+
+    static int dayOfMonth( long epoch ){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(epoch);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        return day;
+    }
+
+    static boolean isDiffDay(long epoch1, long epoch2){
+
+        int day1 = dayOfMonth(epoch1);
+        int day2 = dayOfMonth(epoch2);
+
+        return (day1 != day2);
 
     }
 
@@ -69,6 +158,7 @@ public class ActivitySleep extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             load_button.setClickable(true);
+            back_button.setClickable(false);
             pBar.setClickable(true);
             pBar.setEnabled(true);
         }
@@ -94,6 +184,19 @@ public class ActivitySleep extends AppCompatActivity {
         }
     }
 
+    //TODO the callbacks are not yet backed by data model, but will get json response,
+    //TODO which for now is logged to console
+    private Callback genericCallbackListener = new Callback<Object>() {
+        @Override
+        public void success(Object o, Response response) {
+            Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void failure(RetrofitError retrofitError) {
+            Toast.makeText(getApplicationContext(), retrofitError.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    };
 
 
 }

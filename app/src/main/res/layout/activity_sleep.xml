@@ -68,15 +68,7 @@
 
          </RelativeLayout>
 
-    <NumberPicker
-        android:id="@+id/sleep_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/NumberPicker1"
-        android:scaleX="1"
-        android:scaleY="1">
 
-    </NumberPicker>
 
     <Button
         android:id="@+id/load_button"
