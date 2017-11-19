@@ -39,7 +39,8 @@ public class ActivitySleep extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private long sleepTime;
     int pStatus = 0;
-    int MaxSleep = 12;
+    int MaxSleep = 8;
+    private int age = 23;
     boolean flag = false;
     private long lastConnection;
     protected Handler handler = new Handler();
@@ -73,7 +74,7 @@ public class ActivitySleep extends AppCompatActivity {
         pBar = (ProgressBar) findViewById(R.id.progressBar_sleep);
         back_button = (ImageButton) findViewById(R.id.activity_sleep_back_button);
         load_button = (Button) findViewById(R.id.load_button);
-
+        age = sharedPreferences.getInt("age", 23);
         load_button.setText(isSleepRegistered ? "Stop Sleeping" : "Start Sleeping");
 
         pBar.setProgress(0);
@@ -89,7 +90,7 @@ public class ActivitySleep extends AppCompatActivity {
 
                     wakeUpTime = System.currentTimeMillis()/1000;
                     sleepTime = sharedPreferences.getLong("timeOfSleep",
-                            sleepTime);
+                            sleepTime)-3600*8;
 
                     editor.putLong("timeOfWakeUp", wakeUpTime);
 
@@ -100,8 +101,9 @@ public class ActivitySleep extends AppCompatActivity {
                     );
 
                     isSleepRegistered = false;
+
                     editor.commit();
-                    //new UpdateProgress().execute();
+                    new UpdateProgress().execute((int) ( (wakeUpTime - sleepTime) / 3600 ) );
                 }else {
                     load_button.setText("Stop sleeping");
                     sleepTime = System.currentTimeMillis()/1000;
@@ -121,6 +123,11 @@ public class ActivitySleep extends AppCompatActivity {
                 finish();
             }
         });
+
+        MaxSleep = (int) ( (age < 13 ? 10 :
+                            age < 17 ? 9:
+                                    8
+        ));
 
     }
 
@@ -158,7 +165,7 @@ public class ActivitySleep extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             load_button.setClickable(true);
-            back_button.setClickable(false);
+            back_button.setClickable(true);
             pBar.setClickable(true);
             pBar.setEnabled(true);
         }
@@ -169,13 +176,14 @@ public class ActivitySleep extends AppCompatActivity {
             pBar.setEnabled(false);
             pBar.setProgress(0);
         }
+        @Override
         protected void onProgressUpdate(Integer... values) {
             pBar.setProgress(values[0]);
-            tv.setText(values[0] + "% /" + pBar.getMax()+"%");
+            tv.setText(values[0] + "% /" + pBar.getMax() +"%");
         }
         @Override
         protected Void doInBackground(Integer... arg0) {
-            while (progress < arg0[0]*10) {
+            while (progress < arg0[0] * 100 / MaxSleep) {
                 progress++;
                 publishProgress(progress);
                 SystemClock.sleep(5);
