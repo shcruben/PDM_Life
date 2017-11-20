@@ -8,6 +8,7 @@ package com.iteso.ruben.proyectoversion1;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.api.response.OauthAccessTokenResponse;
@@ -59,6 +61,15 @@ public class HelloUpActivity extends Activity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.hello_up);
+
+        final ImageView img = (ImageView) findViewById(R.id.happy_hamtaro);
+        img.post(new Runnable() {
+
+            @Override
+            public void run() {
+                ((AnimationDrawable) img.getBackground()).start();
+            }
+        });
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HelloUpActivity.this);
         mAccessToken = preferences.getString(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN, null);
