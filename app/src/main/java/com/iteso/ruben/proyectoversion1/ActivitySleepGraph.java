@@ -54,6 +54,7 @@ public class ActivitySleepGraph extends AppCompatActivity {
                 sleepEventListCallbackListener);
 
         graphView = (GraphView) findViewById(R.id.activity_sleep_graph_graph);
+        graphView.setTitleColor(getColor(R.color.white));
 
         back_button = (ImageButton) findViewById(R.id.activity_sleep_graph_back_button);
 
@@ -96,14 +97,20 @@ public class ActivitySleepGraph extends AppCompatActivity {
                     return o1.getX() == o2.getX() ? 0 : o1.getX() > o2.getX() ? 1 : -1;
                 }
             });
-            sleepsTime.add(sleepsTime.get(sleepsTime.size()-1));
-            DataPoint[] sleepTimeDP  = new DataPoint[sleepsTime.size()];
-            sleepsTime.toArray(sleepTimeDP);
 
-            MyAnimPlot myAnimPlot = new MyAnimPlot(graphView, sleepTimeDP);
-            myAnimPlot.show();
+            if(sleepsTime.size() > 0) {
+                sleepsTime.add(sleepsTime.get(sleepsTime.size() - 1));
+                DataPoint[] sleepTimeDP = new DataPoint[sleepsTime.size()];
+                sleepsTime.toArray(sleepTimeDP);
 
-            graphView.setTitle("Sleep Time Graph");
+                MyAnimPlot myAnimPlot = new MyAnimPlot(graphView, sleepTimeDP);
+                myAnimPlot.show();
+
+                graphView.setTitle("Sleep Time Graph");
+
+            }else{
+                graphView.setTitle(getString(R.string.sleep_graph_no_data_message));
+            }
 
 //            List<Series> list = graphView.getSeries();
 //
