@@ -1,6 +1,8 @@
 package com.iteso.ruben.proyectoversion1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -12,6 +14,15 @@ import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.iteso.ruben.proyectoversion1.beans.Constants;
+
+import java.time.DayOfWeek;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class ActivityWater extends AppCompatActivity {
 
@@ -20,10 +31,12 @@ public class ActivityWater extends AppCompatActivity {
     protected ImageButton back_button;
     protected Button myDrink_button;
     int pStatus = 0;
-    static int myProgressMl = 0;
-    final static int topMl = 2000;
+    private int myProgressMl = 0;
+    private double weight = 0;
+    private int age = 0;
+    private int topMl = 2000;
     final static int glasspMl = 250;
-
+    private long lastConnection;
     boolean flag = false;
     protected Handler handler = new Handler();
 
@@ -33,13 +46,25 @@ public class ActivityWater extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
+        myProgressMl =   sharedPreferences.getInt("waterDrank",myProgressMl );
+        lastConnection = sharedPreferences.getLong("lastConnection",lastConnection );
+
+        if(isDiffDay(lastConnection, System.currentTimeMillis())){
+            myProgressMl = 0;
+        }
+
+        weight = (double) sharedPreferences.getFloat("weight", 10 );
+        age = sharedPreferences.getInt("age", 23);
         tv = (TextView) findViewById(R.id.textView_water);
         pBar = (ProgressBar) findViewById(R.id.progressBar_water);
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
 
-
+        topMl = (int) (weight * (age < 30 ? 0.03 :
+                                age < 55 ? 0.025:
+                                0.02 ) * 1000.0);
 
         pBar.setProgress(0);
         myDrink_button.setOnClickListener(new Button.OnClickListener() {
@@ -49,7 +74,6 @@ public class ActivityWater extends AppCompatActivity {
                 myDrink_button.setEnabled(false);
                 back_button.setEnabled(false);
                 back_button.setClickable(false);
-
                 new ActivityWater.UpdateProgress().execute(myProgressMl + glasspMl);
             }
         });
@@ -73,6 +97,38 @@ public class ActivityWater extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(Constants.USER_PREFRENCES,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("waterDrank", myProgressMl);
+        editor.putLong("lastConnection",System.currentTimeMillis());
+        editor.commit();
+
+
+    }
+
+    static int dayOfMonth( long epoch ){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(epoch);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        return day;
+    }
+
+    static boolean isDiffDay(long epoch1, long epoch2){
+
+        int day1 = dayOfMonth(epoch1);
+        int day2 = dayOfMonth(epoch2);
+
+        return (day1 != day2);
+
+    }
     class UpdateProgress extends AsyncTask<Integer, Integer, Void> {
         int progress;
         boolean isEnteringActivity;
@@ -90,9 +146,9 @@ public class ActivityWater extends AppCompatActivity {
             setEnteringActivity(false);
 
             if(myProgressMl >= topMl){
-                myProgressMl = 0;
                 tv.setText(R.string.water_progress_complete_message);
                 tv.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(ActivityWater.this, R.string.too_much_water_toast , Toast.LENGTH_LONG).show();
             }
         }
         @Override

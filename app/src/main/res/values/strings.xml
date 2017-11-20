@@ -38,5 +38,7 @@
     <string name="play_again">Play Again</string>
 
     <string name="press_button_to_connect">Press button to connect</string>
+    <string name="too_much_water_toast">This is too much water now :)</string>
+
 
 </resources>

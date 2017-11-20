@@ -5,8 +5,14 @@
     android:id="@+id/water_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/water"
     tools:context="com.iteso.ruben.proyectoversion1.ActivityWater">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water"/>
 
     <ImageButton
         android:id="@+id/activity_water_back_button"
@@ -15,11 +21,6 @@
         android:layout_gravity="start"
         android:background="@drawable/arrow_sel"
         />
-  <!--  <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/water"/> -->
 
     <LinearLayout
         android:layout_width="match_parent"
