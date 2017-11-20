@@ -43,11 +43,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HelloUpActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="com.jawbone.helloup.HelloUpActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -55,10 +50,18 @@
         </activity>
         <activity
             android:name=".ActivitySplash"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".ActivityJawbone" />
-        <activity android:name=".ActivityMove"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ActivityMove"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActivityWelcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

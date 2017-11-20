@@ -22,6 +22,8 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
+    <string name="slide0_title">Welcome</string>
+
     <string name="slide_1_title">Live happier!</string>
     <string name="slide_1_desc">The easiest way to be healthy and happy with the best pal!</string>
 
@@ -39,6 +41,6 @@
 
     <string name="press_button_to_connect">Press button to connect</string>
     <string name="too_much_water_toast">This is too much water now :)</string>
-
+    <string name="sleep_graph_no_data_message">No data to graph! :(</string>
 
 </resources>
