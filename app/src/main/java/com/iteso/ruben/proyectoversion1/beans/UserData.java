@@ -25,9 +25,36 @@ public class UserData implements Parcelable {
     private long lastConnection;
     private int age;
     private int wakeuptime_hrs, wakeuptime_min;
+    private long timeOfSleep;
+    private long timeOfWakeUp;
     private int levelOfExcercise;
+    private boolean isSleepRegistered;
     private boolean mGender;
     private boolean isLogged;
+
+    public long getTimeOfSleep() {
+        return timeOfSleep;
+    }
+
+    public void setTimeOfSleep(long timeOfSleep) {
+        this.timeOfSleep = timeOfSleep;
+    }
+
+    public long getTimeOfWakeUp() {
+        return timeOfWakeUp;
+    }
+
+    public void setTimeOfWakeUp(long timeOfWakeUp) {
+        this.timeOfWakeUp = timeOfWakeUp;
+    }
+
+    public boolean isSleepRegistered() {
+        return isSleepRegistered;
+    }
+
+    public void setSleepRegistered(boolean sleepRegistered) {
+        isSleepRegistered = sleepRegistered;
+    }
 
     public int getWaterDrank() {
         return waterDrank;
@@ -81,8 +108,11 @@ public class UserData implements Parcelable {
         wakeuptime_hrs = in.readInt();
         wakeuptime_min = in.readInt();
         waterDrank = in.readInt();
+        timeOfSleep = in.readLong();
+        timeOfWakeUp = in.readLong();
         lastConnection = in.readLong();
         mood = in.readInt();
+        isSleepRegistered = in.readByte() != 0;
         isLogged = in.readByte() != 0;;
         mGender = in.readByte() != 0;
     }
@@ -162,8 +192,11 @@ public class UserData implements Parcelable {
         parcel.writeInt(wakeuptime_hrs);
         parcel.writeInt(wakeuptime_min);
         parcel.writeInt(waterDrank);
+        parcel.writeLong(timeOfSleep);
+        parcel.writeLong(timeOfWakeUp);
         parcel.writeLong(lastConnection);
         parcel.writeInt(mood);
+        parcel.writeByte((byte) (isSleepRegistered?1:0));
         parcel.writeByte((byte)(isLogged?1:0));
         parcel.writeByte((byte)(mGender?1:0));
     }
@@ -194,8 +227,11 @@ public class UserData implements Parcelable {
         myUser.setLevelOfExcercise(sharedPreferences.getInt("levelOfExcercise", 1));
         myUser.setLogged(sharedPreferences.getBoolean("isLogged", false));
         myUser.setGender(sharedPreferences.getBoolean("mGender", FEMALE));
+        myUser.setTimeOfSleep(sharedPreferences.getLong("timeOfSleep", timeOfSleep));
+        myUser.setTimeOfWakeUp(sharedPreferences.getLong("timeOfWakeUp", timeOfWakeUp));
         myUser.setlastConnection(sharedPreferences.getLong("lastConnection",lastConnection ));
         myUser.setMood(sharedPreferences.getInt("mood",mood ));
+        myUser.setSleepRegistered(sharedPreferences.getBoolean("sleepRegistered", false));
         myUser.setWaterDrank(sharedPreferences.getInt("waterDrank",waterDrank ));
         return myUser;
     }
@@ -213,8 +249,11 @@ public class UserData implements Parcelable {
         editor.putInt("levelOfExcercise", levelOfExcercise);
         editor.putBoolean("isLogged",isLogged);
         editor.putBoolean("mGender",mGender);
+        editor.putLong("timeOfSleep", timeOfSleep);
+        editor.putLong("timeOfWakeUp", timeOfWakeUp);
         editor.putLong("lastConnection",lastConnection);
         editor.putInt("mood",mood);
+        editor.putBoolean("sleepRegistered", false);
         editor.putInt("waterDrank", waterDrank);
         editor.apply();
 

@@ -159,7 +159,7 @@ public class ActivityDummy extends AppCompatActivity {
             public void success(Object o, Response response) {
 
             LinkedTreeMap<String, LinkedTreeMap> mapa = (LinkedTreeMap) o;
-            LinkedTreeMap<String,String> data = mapa.get("data");
+            LinkedTreeMap<String, String> data = mapa.get("data");
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("First name: " + data.get("first") + "\n");
             stringBuilder.append("Last name: " + data.get("last") + "\n" + "");

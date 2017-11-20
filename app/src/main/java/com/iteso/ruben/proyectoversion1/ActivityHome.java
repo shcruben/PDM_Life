@@ -124,12 +124,11 @@ public class ActivityHome extends AppCompatActivity {
       }
     });
 
-
     fab5.bringToFront();
     fab5.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(ActivityHome.this, ActivityJawbone.class);
+        Intent intent = new Intent(ActivityHome.this, ActivityMove.class);
         //intent.putExtra("USER", myUser);
         startActivity(intent);
 

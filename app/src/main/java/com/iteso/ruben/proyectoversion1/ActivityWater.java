@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iteso.ruben.proyectoversion1.beans.Constants;
 
@@ -53,17 +54,13 @@ public class ActivityWater extends AppCompatActivity {
             myProgressMl = 0;
         }
 
-        weight = Double.parseDouble(sharedPreferences.getString("weight", "80.66"));
-        age = Integer.parseInt(sharedPreferences.getString("age", "50"));
+        weight = (double) sharedPreferences.getFloat("weight", 10 );
+        age = sharedPreferences.getInt("age", 23);
         tv = (TextView) findViewById(R.id.textView_water);
         pBar = (ProgressBar) findViewById(R.id.progressBar_water);
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
-
-
-
-
 
         topMl = (int) (weight * (age < 30 ? 0.03 :
                                 age < 55 ? 0.025:
@@ -77,7 +74,6 @@ public class ActivityWater extends AppCompatActivity {
                 myDrink_button.setEnabled(false);
                 back_button.setEnabled(false);
                 back_button.setClickable(false);
-
                 new ActivityWater.UpdateProgress().execute(myProgressMl + glasspMl);
             }
         });
@@ -150,9 +146,9 @@ public class ActivityWater extends AppCompatActivity {
             setEnteringActivity(false);
 
             if(myProgressMl >= topMl){
-                myProgressMl = 0;
                 tv.setText(R.string.water_progress_complete_message);
                 tv.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(ActivityWater.this, R.string.too_much_water_toast , Toast.LENGTH_LONG).show();
             }
         }
         @Override
