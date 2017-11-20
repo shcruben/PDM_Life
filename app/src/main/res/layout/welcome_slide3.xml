@@ -18,7 +18,7 @@
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
             tools:ignore="ContentDescription"
-            android:background="@drawable/sad"/>
+            android:background="@drawable/bumped_up"/>
             <!--android:src="@drawable/ic_food"-->
 
         <TextView
