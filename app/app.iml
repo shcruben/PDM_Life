@@ -130,6 +130,7 @@
     <orderEntry type="library" name="com.android.support:support-core-utils-26.0.0-alpha1" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-1.0.2" level="project" />
+    <orderEntry type="library" name="com.jjoe64:graphview-4.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-26.0.0-alpha1" level="project" />
     <orderEntry type="library" name="com.android.support:animated-vector-drawable-26.0.0-alpha1" level="project" />
