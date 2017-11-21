@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -33,7 +35,8 @@ public class ActivityHome extends AppCompatActivity {
   protected Animation fabClose;
   protected boolean isSubmenuShown;
   private ImageView img;
-
+  protected Runnable animating;
+  protected static int hamtaro_mood=1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,19 @@ public class ActivityHome extends AppCompatActivity {
     setContentView(R.layout.activity_home);
 
     img = (ImageView) findViewById(R.id.happy_hamtaro);
-    img.post(new Runnable() {
-
+    ChangeAnimation(hamtaro_mood);
+    animating = new Runnable(){
       @Override
       public void run() {
-        ((AnimationDrawable) img.getBackground()).start();
+        ChangeAnimation(hamtaro_mood);
+        (
+                (AnimationDrawable) img.getBackground()).start();
       }
-    });
+    };
+
+    img.post(animating);
+
+
 
     isSubmenuShown = false;
     coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_main_coordinator);
@@ -69,6 +78,8 @@ public class ActivityHome extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         if(!isSubmenuShown){
+          hamtaro_mood++;
+          img.post(animating);
           Interpolator interpol = AnimationUtils.loadInterpolator(getBaseContext(),android.R.interpolator.fast_out_slow_in);
           view.animate().rotation(45f).setInterpolator(interpol).start();
           fab1.startAnimation(fabOpen);
@@ -158,6 +169,34 @@ public class ActivityHome extends AppCompatActivity {
                 snackbar.show();
             }
         }); */
+
+  }
+
+  public void ChangeAnimation(int mood){
+    switch (mood%5) {
+      case 5:
+        img.setBackground(getDrawable(R.drawable.excited));
+        break;
+      case 4:
+        img.setBackground(getDrawable(R.drawable.bumped_up));
+        break;
+      case 3:
+        img.setBackground(getDrawable(R.drawable.eat_happy));
+        break;
+      case 2:
+        img.setBackground(getDrawable(R.drawable.worried));
+        break;
+      case 1:
+        img.setBackground(getDrawable(R.drawable.sad));
+        break;
+      case 0:
+        img.setBackground(getDrawable(R.drawable.excited));
+        break;
+      default:
+        img.setBackground(getDrawable(R.drawable.happy));
+
+        break;
+    }
 
   }
   public UserData loadPreferences(){
