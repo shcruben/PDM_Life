@@ -99,7 +99,7 @@ public class ActivityHome extends AppCompatActivity {
     fab1.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(ActivityHome.this, ActivityDummy.class);
+        Intent intent = new Intent(ActivityHome.this, ActivityHeartRateMonitor.class);
         //intent.putExtra("USER", myUser);
         startActivity(intent);
       }
