@@ -20,4 +20,6 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
+    <integer name="duration">170</integer>
+    <integer name="duration2">350</integer>
 </resources>

@@ -6,15 +6,15 @@
 
     <item
         android:drawable="@drawable/a1"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/a2"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/a3"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/a4"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
 
 </animation-list>

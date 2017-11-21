@@ -1,17 +1,27 @@
 package com.iteso.ruben.proyectoversion1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
+
+import com.iteso.ruben.proyectoversion1.beans.Constants;
+import com.iteso.ruben.proyectoversion1.beans.UserData;
+import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
 
 public class ActivityHome extends AppCompatActivity {
@@ -150,5 +160,29 @@ public class ActivityHome extends AppCompatActivity {
         }); */
 
   }
+  public UserData loadPreferences(){
+    return new UserData().getUserData(ActivityHome.this);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.activity_main_menu, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.activity_main_menu_settings:
+        Intent intent = new Intent(ActivityHome.this, ActivityGetUserDAta.class);
+        //intent.putExtra("USER", myUser);
+        startActivity(intent);
+        break;
+    }
+
+    return super.onOptionsItemSelected(item);
+  }
+
 
 }

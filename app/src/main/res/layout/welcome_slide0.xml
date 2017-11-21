@@ -14,6 +14,13 @@
         android:orientation="vertical">
 
         <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/life_logo"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
+
+        <ImageView
             android:id="@+id/slide0_img"
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
@@ -25,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/slide0_title"
             android:textColor="@android:color/white"
+            android:layout_marginTop="@dimen/fab_margin"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 

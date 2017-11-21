@@ -6,14 +6,14 @@
 
     <item
         android:drawable="@drawable/hamtaro"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/hamtaro2"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/hamtaro3"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/hamtaro4"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     </animation-list>

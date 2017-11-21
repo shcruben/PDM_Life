@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/light"
     tools:context="com.iteso.ruben.proyectoversion1.ActivityGetUserDAta">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <ImageButton
+          android:id="@+id/activity_back_button2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="start"
+          android:background="@drawable/arrow_sel"
+          />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -138,6 +150,6 @@
 
     </LinearLayout>
 
-
+  </RelativeLayout>
 
 </ScrollView>

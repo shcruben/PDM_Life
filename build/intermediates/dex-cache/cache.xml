@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="57c0a407a5932f4c581d81a36733370987e7bdd4">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8f5dbf80b81aa971f56086752f015acc30857cd6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d66af1b6b2fee957649556d029800d0e82779a0d/classes.dex" />
+    </item>
+
+</items>

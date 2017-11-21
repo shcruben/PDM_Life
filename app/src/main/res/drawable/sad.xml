@@ -6,21 +6,21 @@
 
     <item
         android:drawable="@drawable/s1"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/s2"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/s3"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/s4"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/s5"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
     <item
         android:drawable="@drawable/s6"
-        android:duration="250"/>
+        android:duration="@integer/duration"/>
 
 </animation-list>

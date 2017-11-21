@@ -87,6 +87,7 @@ public class ActivityWelcome extends AppCompatActivity {
                     viewPager.setCurrentItem(current);
                 }else{
                     launchNextActivity();
+
                 }
             }
         });

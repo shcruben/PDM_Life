@@ -117,7 +117,7 @@
             android:layout_alignLeft="@id/activity_home_background"
             android:layout_marginBottom="@dimen/fab_margin2"
             android:layout_marginLeft="@dimen/fab_margin"
-            android:background="@drawable/worried"
+            android:background="@drawable/excited"
             android:scaleType="centerCrop"
             android:scaleX="1.2"
             android:scaleY="1.2" />
