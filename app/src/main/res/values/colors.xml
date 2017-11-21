@@ -9,6 +9,8 @@
     <color name="colorA2">#f27041</color>
     <color name="white">#ffffff</color>
     <color name="transparent">#0fff</color>
+    <color name="back">#ff20</color>
+    <color name="text_c">#f005</color>
     <color name="black_overlay">#66000000</color>
 
     <!-- Screens background color-->

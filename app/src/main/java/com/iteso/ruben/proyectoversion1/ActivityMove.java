@@ -111,8 +111,16 @@ public class ActivityMove extends AppCompatActivity {
                 animPlotKms.show();
 
                 stepsGraph.setTitle("Steps Graph");
+                stepsGraph.setTitleTextSize(40);
+                stepsGraph.setTitleColor(R.color.text_c);
+
                 caloriesGraph.setTitle("Calories Graph");
+                caloriesGraph.setTitleTextSize(40);
+                caloriesGraph.setTitleColor(R.color.text_c);
+
                 kmsGraph.setTitle("kms Graph");
+                kmsGraph.setTitleTextSize(40);
+                kmsGraph.setTitleColor(R.color.text_c);
             }
 
 

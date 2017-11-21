@@ -28,7 +28,6 @@ public class ActivityGetUserDAta extends AppCompatActivity {
 
     private UserData myUser;
     protected NumberPicker weight, height, age, levelExercise;
-    protected TimePicker wakeUp;
     protected Button save;
     protected ImageButton back_button;
 
@@ -43,7 +42,6 @@ public class ActivityGetUserDAta extends AppCompatActivity {
         weight = (NumberPicker) findViewById(R.id.weight_data);
         height = (NumberPicker) findViewById(R.id.height_data);
         age = (NumberPicker) findViewById(R.id.age_data);
-        wakeUp = (TimePicker) findViewById(R.id.waketime_data);
         save = (Button) findViewById(R.id.save_user_data);
         back_button = (ImageButton) findViewById(R.id.activity_back_button2);
 
@@ -71,8 +69,6 @@ public class ActivityGetUserDAta extends AppCompatActivity {
                 myUser.setAge(age.getValue());
                 myUser.setHeight(height.getValue());
                 myUser.setWeight(weight.getValue());
-                myUser.setWakeuptime_hrs(wakeUp.getHour());
-                myUser.setWakeuptime_min(wakeUp.getMinute());
                 myUser.setLevelOfExcercise(levelExercise.getValue());
                 myUser.setLogged(true);
                 myUser.setWaterDrank(0);

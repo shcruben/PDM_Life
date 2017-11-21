@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Insert weight"
+            android:textStyle="bold"
             android:textSize="25sp"
             />
 
@@ -38,9 +39,10 @@
             android:id="@+id/weight_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/numberPickerStyle"
             android:scaleX="0.8"
-            android:scaleY="0.6">
+            android:scaleY="0.6"
+            android:theme="@style/NumberPickerText"
+            android:scrollbarStyle="insideInset">
 
         </NumberPicker>
 
@@ -48,13 +50,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Insert height"
+            android:textStyle="bold"
             android:textSize="25sp"/>
 
         <NumberPicker
             android:id="@+id/height_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/numberPickerStyle"
+            android:theme="@style/NumberPickerText"
             android:scaleX="0.8"
             android:scaleY="0.6">
 
@@ -64,44 +67,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Insert your age"
+            android:textStyle="bold"
             android:textSize="25sp"/>
 
         <NumberPicker
             android:id="@+id/age_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/numberPickerStyle"
+            android:theme="@style/NumberPickerText"
             android:scaleX="0.8"
             android:scaleY="0.6">
 
         </NumberPicker>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Insert your wake up time"
-            android:textSize="25sp"/>
 
-        <TimePicker
-            android:id="@+id/waketime_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:timePickerMode="spinner"
-            >
-
-        </TimePicker>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Insert your level of exercise"
-            android:textSize="25sp"/>
+            android:textStyle="bold"
+            android:textSize="25sp"
+            />
 
         <NumberPicker
             android:id="@+id/exercise_level_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/numberPickerStyle"
+            android:theme="@style/NumberPickerText"
             android:scaleX="0.8"
             android:scaleY="0.6">
 
@@ -110,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender"
+            android:textStyle="bold"
             android:textSize="25sp"/>
 
         <RadioGroup

@@ -19,7 +19,7 @@
 
     <style name="NumberPicker1" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/holo_green_light</item>
 
     </style>
 
@@ -40,5 +40,11 @@
     </style>
 
     <style name="ButtonBarButton" />
+
+    <style name="NumberPickerText">
+        <item name="android:textSize">35dp</item>
+        <item name="android:textColorPrimary">#e7073360</item>
+        <item name="colorAccent">#aa0051ff</item>
+    </style>
 
 </resources>
