@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/water_main"
     android:layout_width="match_parent"
@@ -12,15 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/water"/>
+        android:src="@drawable/water"
+        tools:ignore="ContentDescription"/>
 
-    <ImageButton
-        android:id="@+id/activity_water_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:background="@drawable/arrow_sel"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/activity_water_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@drawable/arrow_sel"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/activity_water_textview_completions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/activity_water_completions_margin"
+            android:layout_marginEnd="@dimen/activity_water_completions_margin"
+            android:text="@string/activity_water_completions_default_text"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,8 +54,6 @@
             android:id="@+id/textView_water"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/progressBar1"
-            android:layout_centerHorizontal="true"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/title_text_size"
             android:textStyle="bold"
@@ -79,7 +96,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
             android:background="@drawable/button_selector"
-            android:text="One Glass"
+            android:text="@string/one_glass_button_text"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 

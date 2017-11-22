@@ -26,19 +26,33 @@ import java.util.TimeZone;
 
 public class ActivityWater extends AppCompatActivity {
 
-    public TextView tv, tv_left;
+
+    public TextView tv, tv_left, tv_completions;
     public ProgressBar pBar;
     protected ImageButton back_button;
     protected Button myDrink_button;
-    int pStatus = 0;
     private int myProgressMl = 0;
     private double weight = 0;
     private int age = 0;
     private int topMl = 2000;
     final static int glasspMl = 250;
     private long lastConnection;
-    boolean flag = false;
-    protected Handler handler = new Handler();
+    private static int happiness = 0;
+    private static int completions = 0;
+    private static boolean isCompletedToday = false;
+
+    public static int getHappiness() {
+        return happiness;
+    }
+
+    public static void setHappiness(int happiness) {
+        ActivityWater.happiness = happiness;
+    }
+
+    public static void increaseHappiness(int inc){
+        ActivityWater.happiness += inc;
+    }
+
 
 
     @Override
@@ -49,9 +63,12 @@ public class ActivityWater extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
         myProgressMl =   sharedPreferences.getInt("waterDrank",myProgressMl );
         lastConnection = sharedPreferences.getLong("lastConnection",lastConnection );
+        completions = sharedPreferences.getInt("completions", completions);
+        isCompletedToday = sharedPreferences.getBoolean("isCompletedToday", isCompletedToday);
 
         if(isDiffDay(lastConnection, System.currentTimeMillis())){
             myProgressMl = 0;
+            isCompletedToday = false;
         }
 
         weight = (double) sharedPreferences.getFloat("weight", 10 );
@@ -61,6 +78,7 @@ public class ActivityWater extends AppCompatActivity {
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
+        tv_completions = findViewById(R.id.activity_water_textview_completions);
 
         topMl = (int) (weight * (age < 30 ? 0.03 :
                                 age < 55 ? 0.025:
@@ -91,6 +109,11 @@ public class ActivityWater extends AppCompatActivity {
             }
         });
 
+        String completions_string = getResources()
+                .getString(R.string.activity_water_completions_default_text) +
+                Integer.toString(completions);
+        tv_completions.setText(completions_string);
+
         UpdateProgress pBarProgress = new UpdateProgress();
         pBarProgress.setEnteringActivity(true);
         pBarProgress.execute(myProgressMl);
@@ -107,6 +130,8 @@ public class ActivityWater extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("waterDrank", myProgressMl);
         editor.putLong("lastConnection",System.currentTimeMillis());
+        editor.putInt("completions", completions);
+        editor.putBoolean("isCompletedToday", isCompletedToday);
         editor.commit();
 
 
@@ -141,13 +166,23 @@ public class ActivityWater extends AppCompatActivity {
             pBar.setClickable(true);
             pBar.setEnabled(true);
 
-            if(!isEnteringActivity)
+            if(!isEnteringActivity) {
                 myProgressMl += glasspMl;
+                increaseHappiness(+2);
+            }
             setEnteringActivity(false);
 
             if(myProgressMl >= topMl){
-                tv.setText(R.string.water_progress_complete_message);
-                tv.setTextColor(getResources().getColor(R.color.colorAccent));
+                if(!isCompletedToday) {
+                    tv.setText(R.string.water_progress_complete_message);
+                    tv.setTextColor(getColor(R.color.colorAccent));
+                    completions++;
+                    String completions_string = getResources()
+                            .getString(R.string.activity_water_completions_default_text) +
+                            Integer.toString(completions);
+                    tv_completions.setText(completions_string);
+                }
+                isCompletedToday = true;
                 Toast.makeText(ActivityWater.this, R.string.too_much_water_toast , Toast.LENGTH_LONG).show();
             }
         }
@@ -159,7 +194,7 @@ public class ActivityWater extends AppCompatActivity {
             pBar.setEnabled(false);
             pBar.setProgress(progress);
             tv.setText(R.string.water_progress_incomplete_message);
-            tv.setTextColor(getResources().getColor(R.color.white));
+            tv.setTextColor(getColor(R.color.white));
         }
         protected void onProgressUpdate(Integer... values) {
             pBar.setProgress(values[0]);
