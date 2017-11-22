@@ -14,4 +14,16 @@
     <dimen name="text_water_progress_margin_top">90dp</dimen>
     <dimen name="title_text_size">20sp</dimen>
     <dimen name="text_SIZE">40sp</dimen>
+
+    <dimen name="slide_title">30sp</dimen>
+    <dimen name="slide_desc">16sp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="activity_water_completions_margin">20dp</dimen>
+
+    <integer name="duration">170</integer>
+    <integer name="duration2">350</integer>
+    <integer name="text_SIZE">35</integer>
 </resources>

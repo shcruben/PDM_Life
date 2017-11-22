@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/reds"
+    tools:context="com.iteso.ruben.proyectoversion1.ActivityMove">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/activity_sleep_graph_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/arrow_sel"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/activity_sleep_graph_back_button">
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:id="@+id/activity_move_steps"
+            />
+        <com.jjoe64.graphview.GraphView
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/activity_move_kms"
+            />
+        <com.jjoe64.graphview.GraphView
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/activity_move_calories"
+        />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

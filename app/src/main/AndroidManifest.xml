@@ -3,6 +3,10 @@
     package="com.iteso.ruben.proyectoversion1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,6 @@
         android:roundIcon="@drawable/hamtaro"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".ActivityAchievement"
             android:screenOrientation="portrait" />
@@ -35,29 +38,39 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ActivitySleepGraph"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ActivityWater"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".HelloUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".HelloUpActivity">
             <intent-filter>
                 <action android:name="com.jawbone.helloup.HelloUpActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ActivitySplash"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
+        <activity android:name=".ActivityJawbone" />
+        <activity
+            android:name=".ActivityMove"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActivityWelcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-
-        <activity android:name=".ActivityJawbone"></activity>
+        <activity
+            android:name=".ActivitySettings"
+            android:label="@string/title_activity_settings"></activity>
+        <activity android:name=".ActivityHeartRateMonitor"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

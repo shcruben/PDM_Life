@@ -5,6 +5,25 @@
     android:gravity="center_horizontal|center_vertical"
     android:orientation="vertical" >
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/life_logo"
+        android:scaleX="0.5"
+        android:scaleY="0.5" />
+
+    <ImageView
+        android:id="@+id/happy_hamtaro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activity_home_background"
+        android:layout_alignLeft="@id/activity_home_background"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@drawable/excited"
+        android:scaleType="centerCrop"
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
     <TextView
         android:id="@+id/authorizeText1"
         android:layout_width="wrap_content"

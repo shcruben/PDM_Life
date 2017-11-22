@@ -101,55 +101,8 @@ public class ActivityDummy extends AppCompatActivity {
         return new UserData().getUserData(ActivityDummy.this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_logout, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_logout_button:
-                clearPreferences();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-  //  @RequiresApi(api = Build.VERSION_CODES.N)
-    protected void clearPreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
-                Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear().commit();
-
-        try {
-            Context context = createPackageContext("com.jawbone.helloup",CONTEXT_INCLUDE_CODE|Context.CONTEXT_IGNORE_SECURITY);
-            SharedPreferences myGod = PreferenceManager.getDefaultSharedPreferences(context);
-            myGod.edit().clear().commit();
-
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }catch (SecurityException e){
-            e.printStackTrace();
-        }
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDummy.this);
-        SharedPreferences.Editor editor2 = sharedPreferences.edit();
-        editor2.remove(UpPlatformSdkConstants.UP_PLATFORM_ACCESS_TOKEN);
-        editor2.remove(UpPlatformSdkConstants.UP_PLATFORM_REFRESH_TOKEN);
-        editor2.clear().commit();
-
-        Intent intent = new Intent(this, HelloUpActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
-
-    }
 
 
     //TODO the callbacks are not yet backed by data model, but will get json response,
@@ -159,7 +112,7 @@ public class ActivityDummy extends AppCompatActivity {
             public void success(Object o, Response response) {
 
             LinkedTreeMap<String, LinkedTreeMap> mapa = (LinkedTreeMap) o;
-            LinkedTreeMap<String,String> data = mapa.get("data");
+            LinkedTreeMap<String, String> data = mapa.get("data");
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("First name: " + data.get("first") + "\n");
             stringBuilder.append("Last name: " + data.get("last") + "\n" + "");

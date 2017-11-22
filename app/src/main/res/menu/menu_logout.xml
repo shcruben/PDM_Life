@@ -5,6 +5,6 @@
     <item
         android:id="@+id/menu_logout_button"
         android:icon="@android:drawable/presence_offline"
-        android:title="Item"
+        android:title="Settings"
         app:showAsAction="always" />
 </menu>
