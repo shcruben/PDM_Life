@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -33,12 +34,25 @@ public class ActivityHome extends AppCompatActivity {
   protected Animation fabClose;
   protected boolean isSubmenuShown;
   private ImageView img;
-
+  private static int daysConnected = 0;
+  private long lastTimeHome = 0;
+  public static int getDaysConnected() {
+    return daysConnected;
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
+
+    SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
+            Context.MODE_PRIVATE);
+    daysConnected = sharedPreferences.getInt("daysConnected", daysConnected);
+    lastTimeHome = sharedPreferences.getLong("lastTimeHome", lastTimeHome);
+
+    if(ActivityWater.isDiffDay(lastTimeHome, System.currentTimeMillis())){
+
+    }
 
     img = (ImageView) findViewById(R.id.happy_hamtaro);
     img.post(new Runnable() {
@@ -170,6 +184,15 @@ public class ActivityHome extends AppCompatActivity {
     return super.onCreateOptionsMenu(menu);
   }
 
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
+            Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    editor.putLong("lastTimeHome", System.currentTimeMillis());
+  }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {

@@ -53,7 +53,9 @@ public class ActivityWater extends AppCompatActivity {
         ActivityWater.happiness += inc;
     }
 
-
+    public static int getCompletions() {
+        return completions;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
