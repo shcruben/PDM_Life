@@ -11,11 +11,11 @@
 
     <string-array name="myGoals">
         <item>Complete water intake for a day</item>
-        <item>Nice sleep</item>
-        <item>week water streak </item>
-        <item>week sleep streak </item>
-        <item>Enough steps for a day </item>
-        <item>Enough steps for a week </item>
+        <item>Nice sleep for today</item>
+        <item>10 day water streak </item>
+        <item>10 day sleep streak </item>
+        <item>Complete steps for a day </item>
+        <item>Complete steps for this 10 days </item>
     </string-array>
 
     <string name="next">NEXT</string>

@@ -83,8 +83,11 @@ public class ActivityHeartRateMonitor extends AppCompatActivity {
         previewHolder.addCallback(surfaceCallback);
 
         image = findViewById(R.id.activity_heart_rate_heartBeatView);
+        image.setScaleX((float)2.0);
+        image.setScaleY((float)2.0);
         text = (TextView) findViewById(R.id.activity_heart_rate_rate);
-
+        text.setTextSize(40);
+        text.setTextColor(getResources().getColor(R.color.text_c));
 
     }
 
@@ -234,6 +237,8 @@ public class ActivityHeartRateMonitor extends AppCompatActivity {
             if (newType != currentType) {
                 currentType = newType;
                 image.postInvalidate();
+                image.setScaleX((float)2.0);
+                image.setScaleY((float)2.0);
             }
 
             long endTime = System.currentTimeMillis();
@@ -265,6 +270,9 @@ public class ActivityHeartRateMonitor extends AppCompatActivity {
                 }
                 int beatsAvg = (beatsArrayAvg / beatsArrayCnt);
                 text.setText(String.valueOf(beatsAvg));
+                text.setTextSize(40);
+                text.setTextColor(getResources().getColor(R.color.text_c));
+
                 startTime = System.currentTimeMillis();
                 beats = 0;
             }

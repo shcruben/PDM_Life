@@ -188,7 +188,7 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
     public boolean AchieveSteps(double steps){
         boolean nice;
 
-        nice = (steps >= 75000)? true : false;
+        nice = (steps >= 5000)? true : false;
 
         return nice;
     }
