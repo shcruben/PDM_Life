@@ -1,5 +1,6 @@
 package com.iteso.ruben.proyectoversion1;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
+import com.iteso.ruben.proyectoversion1.beans.Constants;
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import com.jjoe64.graphview.GraphView;
@@ -28,6 +30,7 @@ public class ActivityMove extends AppCompatActivity {
     private GraphView stepsGraph;
     private GraphView caloriesGraph;
     private GraphView kmsGraph;
+    protected double todaySteps;
     private ArrayList<DataPoint> steps;
     private ArrayList<DataPoint> calories;
     private ArrayList<DataPoint> kms;
@@ -85,8 +88,13 @@ public class ActivityMove extends AppCompatActivity {
                 steps.add(new DataPoint(i , detail.get("steps")) );
                 calories.add(new DataPoint(i , detail.get("bg_calories")/10 ) );
                 kms.add(new DataPoint(i , detail.get("km")) );
+                if(i == 0){todaySteps =  detail.get("steps"); }
                 i++;
             }
+            SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putLong("todaySteps", (long) todaySteps);
+            editor.apply();
 
             if (steps.size() > 0 && calories.size() > 0 && kms.size() > 0) {
 

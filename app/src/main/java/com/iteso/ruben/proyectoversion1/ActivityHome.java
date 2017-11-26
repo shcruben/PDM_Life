@@ -32,6 +32,7 @@ public class ActivityHome extends AppCompatActivity {
   protected FloatingActionButton fab1,fab2,fab3,fab4,fab5 ;
   protected Animation fabOpen;
   protected Animation fabClose;
+  protected int mood;
   protected boolean isSubmenuShown;
   private ImageView img;
   private static int daysConnected = 0;
@@ -49,6 +50,8 @@ public class ActivityHome extends AppCompatActivity {
             Context.MODE_PRIVATE);
     daysConnected = sharedPreferences.getInt("daysConnected", daysConnected);
     lastTimeHome = sharedPreferences.getLong("lastTimeHome", lastTimeHome);
+    mood = Math.round(sharedPreferences.getInt("mood",mood )/2);
+
 
     if(ActivityWater.isDiffDay(lastTimeHome, System.currentTimeMillis())){
 

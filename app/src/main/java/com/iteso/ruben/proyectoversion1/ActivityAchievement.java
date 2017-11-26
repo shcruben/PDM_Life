@@ -40,6 +40,7 @@ public class ActivityAchievement extends AppCompatActivity {
     protected boolean trophySteps;
     protected double todaySteps;
     protected double todayHours;
+    protected int mood = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,8 +123,10 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         trophySleep = AchieveSleep(week_hours);
+        mood = mood + SleepMood(week_hours);
         editor.putBoolean("hoursSleepComplete",trophySleep);
         editor.putLong("todayHours",(long) todayHours);
+        editor.putLong("hoursSleepWeek",(long)week_hours);
         editor.apply();
         Toast.makeText(getApplicationContext(), (trophySleep)?"yees trphy sleep" +(week_hours*100/70) :"NOOO sleep" +(week_hours*100/70) , Toast.LENGTH_LONG).show();
     }
@@ -164,10 +167,12 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
             SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             trophySteps = AchieveSteps(weekSteps);
+            mood = mood + StepsMood(weekSteps);
             editor.putLong("todaySteps", (long) todaySteps);
             editor.putBoolean("stepsComplete",trophySteps);
+            editor.putInt("mood",mood);
             editor.apply();
-            Toast.makeText(getApplicationContext(), (trophySteps)?"yees trphy steps " +(weekSteps*100/75000):"NOOO steps "+(weekSteps*100/75000) , Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), (trophySteps)?"yees trphy steps:" +(weekSteps*100/75000) + " mood " +mood:"NOOO steps "+(weekSteps*100/75000) + " mood " +mood , Toast.LENGTH_LONG).show();
 
         }
 
@@ -191,6 +196,24 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
         nice = (steps >= 5000)? true : false;
 
         return nice;
+    }
+
+    public int StepsMood(double steps){
+        int step_mood;
+
+        step_mood = (steps >= 75000)?5: (steps >= 60000)?4:
+                    (steps >= 45000)?3: (steps >= 30000)?2:1;
+
+        return step_mood;
+    }
+
+    public int SleepMood(double hours){
+        int sleep_mood;
+
+        sleep_mood = (hours >= 80)?5: (hours >= 64)?4:
+                (hours >= 48)?3: (hours >= 32)?2:1;
+
+        return sleep_mood;
     }
 }
 

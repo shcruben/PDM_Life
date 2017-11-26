@@ -32,9 +32,20 @@ public class UserData implements Parcelable {
     private boolean mGender;
     private boolean isLogged;
     private double hoursSleepWeek;
+    private double stepsWeek;
     private boolean hoursSleepComplete;
     private double todaySteps;
     private double todayHours;
+
+    public double getStepsWeek() {
+        return stepsWeek;
+    }
+
+    public void setStepsWeek(double stepsWeek) {
+        this.stepsWeek = stepsWeek;
+    }
+
+
 
     public double getTodayHours() {
         return todayHours;
@@ -52,7 +63,6 @@ public class UserData implements Parcelable {
     public void setTodaySteps(double todaySteps) {
         this.todaySteps = todaySteps;
     }
-
 
 
     public boolean isStepsComplete() {
@@ -167,6 +177,7 @@ public class UserData implements Parcelable {
         isLogged = in.readByte() != 0;
         mGender = in.readByte() != 0;
         hoursSleepWeek = in.readDouble();
+        stepsWeek = in.readDouble();
         todaySteps = in.readDouble();
         todayHours = in.readDouble();
         hoursSleepComplete = in.readByte() !=0;
@@ -254,6 +265,7 @@ public class UserData implements Parcelable {
         parcel.writeLong(lastConnection);
         parcel.writeInt(mood);
         parcel.writeDouble(hoursSleepWeek);
+        parcel.writeDouble(stepsWeek);
         parcel.writeDouble(todaySteps);
         parcel.writeDouble(todayHours);
         parcel.writeByte((byte) (isSleepRegistered?1:0));
@@ -297,6 +309,7 @@ public class UserData implements Parcelable {
         myUser.setSleepRegistered(sharedPreferences.getBoolean("sleepRegistered", false));
         myUser.setWaterDrank(sharedPreferences.getInt("waterDrank",waterDrank ));
         myUser.setHoursSleepWeek(sharedPreferences.getLong("hoursSleepWeek",(long) hoursSleepWeek ));
+        myUser.setHoursSleepWeek(sharedPreferences.getLong("stepsWeek",(long) stepsWeek ));
         myUser.setHoursSleepComplete(sharedPreferences.getBoolean("hoursSleepComplete", false));
         myUser.setHoursSleepComplete(sharedPreferences.getBoolean("stepsComplete", false));
         myUser.setTodaySteps(sharedPreferences.getLong("todaySteps", (long) todaySteps));
@@ -325,10 +338,11 @@ public class UserData implements Parcelable {
         editor.putBoolean("sleepRegistered", false);
         editor.putInt("waterDrank", waterDrank);
         editor.putLong("hoursSleepWeek",(long)hoursSleepWeek);
+        editor.putLong("stepsWeek",(long)stepsWeek);
         editor.putBoolean("hoursSleepComplete",false);
         editor.putBoolean("stepsComplete",false);
-        editor.putFloat("todaySteps",(long)todaySteps);
-        editor.putFloat("todayHours",(long)todayHours);
+        editor.putLong("todaySteps",(long)todaySteps);
+        editor.putLong("todayHours",(long)todayHours);
         editor.apply();
 
     }

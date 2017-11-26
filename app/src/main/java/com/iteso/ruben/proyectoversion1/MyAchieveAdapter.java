@@ -19,6 +19,8 @@ public class MyAchieveAdapter extends ArrayAdapter<String> {
 
         private final Context context;
         private final String[] values;
+        private final long steps_dummy=1;
+        private int mood;
         private boolean sleepCompleteTen,stepsCompleteTen,stepsTodayComplete,sleepTodayComplete,waterCompleteToday;
 
     public MyAchieveAdapter(Context context, String[] values) {
@@ -41,9 +43,11 @@ public class MyAchieveAdapter extends ArrayAdapter<String> {
                 Context.MODE_PRIVATE);
         sleepCompleteTen = (sharedPreferences.getBoolean("hoursSleepComplete", false));
         stepsCompleteTen = sharedPreferences.getBoolean("stepsComplete", false);
-        stepsTodayComplete = (sharedPreferences.getLong("todaySteps",(long)  0.0)>7500)?true:false;
-        sleepTodayComplete = (sharedPreferences.getLong("todayHours", (long) 0)>7)?true:false;
+
+        stepsTodayComplete = (sharedPreferences.getLong("todaySteps",steps_dummy )>=7500)?true:false;
+        sleepTodayComplete = (sharedPreferences.getLong("todayHours", steps_dummy )>7)?true:false;
         waterCompleteToday = sharedPreferences.getBoolean("isCompletedToday", false);
+
 
         if(sleepCompleteTen & throphy_done.startsWith("10 day sleep streak")){
             imageView.setImageResource(R.drawable.achieve_yes);
