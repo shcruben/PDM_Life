@@ -68,10 +68,7 @@ public class ActivityWater extends AppCompatActivity {
         completions = sharedPreferences.getInt("completions", completions);
         isCompletedToday = sharedPreferences.getBoolean("isCompletedToday", isCompletedToday);
 
-        if(isDiffDay(lastConnection, System.currentTimeMillis())){
-            myProgressMl = 0;
-            isCompletedToday = false;
-        }
+
 
         weight = (double) sharedPreferences.getFloat("weight", 10 );
         age = sharedPreferences.getInt("age", 23);
@@ -85,6 +82,16 @@ public class ActivityWater extends AppCompatActivity {
         topMl = (int) (weight * (age < 30 ? 0.03 :
                                 age < 55 ? 0.025:
                                 0.02 ) * 1000.0);
+
+        if(isDiffDay(lastConnection, System.currentTimeMillis())){
+            sharedPreferences.edit().putInt("water_mood",
+                    (int) ((float) myProgressMl/ (float) topMl * 5) );
+            myProgressMl = 0;
+            isCompletedToday = false;
+            sharedPreferences.edit().putBoolean("isCompletedToday", false);
+
+        }
+
 
         pBar.setProgress(0);
         myDrink_button.setOnClickListener(new Button.OnClickListener() {

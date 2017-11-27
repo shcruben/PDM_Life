@@ -17,11 +17,11 @@ import com.iteso.ruben.proyectoversion1.beans.Constants;
 
 public class MyAchieveAdapter extends ArrayAdapter<String> {
 
-        private final Context context;
-        private final String[] values;
-        private final long steps_dummy=1;
-        private int mood;
-        private boolean sleepCompleteTen,stepsCompleteTen,stepsTodayComplete,sleepTodayComplete,waterCompleteToday;
+    private final Context context;
+    private final String[] values;
+    private final long steps_dummy=1;
+    private int mood;
+    private boolean sleepCompleteTen,stepsCompleteTen,stepsTodayComplete,sleepTodayComplete,waterCompleteToday;
 
     public MyAchieveAdapter(Context context, String[] values) {
         super(context, R.layout.achieves_list_item,values);
