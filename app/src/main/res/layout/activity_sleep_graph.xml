@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/sleep_graph_wallpaper"/>
+        android:src="@drawable/lightgreen"/>
 
     <ImageButton
         android:id="@+id/activity_sleep_graph_back_button"

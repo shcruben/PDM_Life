@@ -71,7 +71,7 @@ public class ActivitySleepGraph extends AppCompatActivity {
     private Callback sleepEventListCallbackListener = new Callback<Object>() {
         @Override
         public void success(Object o, Response response) {
-            Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
+          //  Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
             LinkedTreeMap<String, LinkedTreeMap> received = (LinkedTreeMap) o;
             LinkedTreeMap<String, ArrayList> data = received.get("data");
             ArrayList< LinkedTreeMap <String, Object> > items = data.get("items");
@@ -107,6 +107,8 @@ public class ActivitySleepGraph extends AppCompatActivity {
                 myAnimPlot.show();
 
                 graphView.setTitle("Sleep Time Graph");
+                graphView.setTitleTextSize(40);
+                graphView.setTitleColor(R.color.text_c);
 
             }else{
                 graphView.setTitle(getString(R.string.sleep_graph_no_data_message));

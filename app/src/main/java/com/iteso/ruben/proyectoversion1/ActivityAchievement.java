@@ -128,7 +128,7 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
         editor.putLong("todayHours",(long) todayHours);
         editor.putLong("hoursSleepWeek",(long)week_hours);
         editor.apply();
-        Toast.makeText(getApplicationContext(), (trophySleep)?"yees trphy sleep" +(week_hours*100/70) :"NOOO sleep" +(week_hours*100/70) , Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getApplicationContext(), (trophySleep)?"yees trphy sleep" +(week_hours*100/70) :"NOOO sleep" +(week_hours*100/70) , Toast.LENGTH_LONG).show();
     }
     @Override
     public void failure(RetrofitError retrofitError) {
@@ -172,7 +172,7 @@ private Callback sleepEventListCallbackListener = new Callback<Object>() {
             editor.putBoolean("stepsComplete",trophySteps);
             editor.putInt("mood",mood);
             editor.apply();
-            Toast.makeText(getApplicationContext(), (trophySteps)?"yees trphy steps:" +(weekSteps*100/75000) + " mood " +mood:"NOOO steps "+(weekSteps*100/75000) + " mood " +mood , Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), (trophySteps)?"yees trphy steps:" +(weekSteps*100/75000) + " mood " +mood:"NOOO steps "+(weekSteps*100/75000) + " mood " +mood , Toast.LENGTH_LONG).show();
 
         }
 
