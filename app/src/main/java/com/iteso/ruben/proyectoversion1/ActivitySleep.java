@@ -211,7 +211,7 @@ public class ActivitySleep extends AppCompatActivity {
     private Callback genericCallbackListener = new Callback<Object>() {
         @Override
         public void success(Object o, Response response) {
-            Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
+          //  Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_LONG).show();
         }
 
         @Override

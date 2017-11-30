@@ -45,6 +45,8 @@ public class ActivityHome extends AppCompatActivity {
     protected Animation fabOpen;
     protected Animation fabClose;
     protected int mood = 0;
+    protected int moodS = 0;
+    protected int moodM = 0;
     protected int wmood= 5;
     protected boolean isSubmenuShown;
     private ImageView img;
@@ -52,6 +54,8 @@ public class ActivityHome extends AppCompatActivity {
     private long lastTimeHome = 0;
     private double week_hours = 0;
     private double weekSteps = 0;
+    private boolean isCallbackDoneS;
+    private boolean isCallbackDoneM;
     private String mAccessToken;
     protected Runnable animating;
 
@@ -86,6 +90,9 @@ public class ActivityHome extends AppCompatActivity {
                 null,
                 MoveEventListCallbackListener);
 
+        while(isCallbackDoneM && isCallbackDoneS != true);
+        mood = (moodM+moodS + wmood)/3;
+
 
         daysConnected = sharedPreferences.getInt("daysConnected", daysConnected);
         lastTimeHome = sharedPreferences.getLong("lastTimeHome", lastTimeHome);
@@ -102,6 +109,7 @@ public class ActivityHome extends AppCompatActivity {
         };
 
 
+        setAnimating();
 
 
         isSubmenuShown = false;
@@ -182,7 +190,7 @@ public class ActivityHome extends AppCompatActivity {
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityHome.this, ActivityAchievement.class);
+                Intent intent = new Intent(ActivityHome.this, ActivityMove.class);
                 //intent.putExtra("USER", myUser);
                 startActivity(intent);
 
@@ -193,7 +201,7 @@ public class ActivityHome extends AppCompatActivity {
         fab5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityHome.this, ActivityMove.class);
+                Intent intent = new Intent(ActivityHome.this, ActivityAchievement.class);
                 //intent.putExtra("USER", myUser);
                 startActivity(intent);
 
@@ -233,6 +241,11 @@ public class ActivityHome extends AppCompatActivity {
                 UpPlatformSdkConstants.API_VERSION_STRING,
                 null,
                 MoveEventListCallbackListener);
+
+        while(isCallbackDoneM && isCallbackDoneS != true);
+        mood = (moodM+moodS + wmood)/3;
+
+        setAnimating();
     }
 
     @Override
@@ -272,9 +285,10 @@ public class ActivityHome extends AppCompatActivity {
                 Double totalSleep = (timeCompleted - timeCreated) / 3600;
                 week_hours = (Double) totalSleep + week_hours ;
             }
+            moodS = SleepMood(week_hours);
+            isCallbackDoneS = true;
 
-            mood = (mood + wmood + SleepMood(week_hours))/3;
-            setAnimating();
+
         }
         @Override
         public void failure(RetrofitError retrofitError) {
@@ -295,9 +309,9 @@ public class ActivityHome extends AppCompatActivity {
                 LinkedTreeMap<String, Double> detail =  (LinkedTreeMap<String, Double>) l.get("details");
                 weekSteps = (Double) detail.get("steps") + weekSteps ;
             }
+            moodM = StepsMood(weekSteps);
+            isCallbackDoneM = true;
 
-            mood = (mood + wmood + StepsMood(weekSteps))/3;
-            setAnimating();
         }
 
         @Override

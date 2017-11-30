@@ -15,6 +15,7 @@ import com.iteso.ruben.proyectoversion1.beans.Constants;
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.ArrayList;
@@ -129,6 +130,14 @@ public class ActivityMove extends AppCompatActivity {
                 kmsGraph.setTitle("kms Graph");
                 kmsGraph.setTitleTextSize(40);
                 kmsGraph.setTitleColor(R.color.text_c);
+
+                GraphView[] graphViews = {stepsGraph, caloriesGraph, kmsGraph};
+
+                for(GraphView graphView : graphViews) {
+                    StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
+                    staticLabelsFormatter.setHorizontalLabels(new String[]{"newest", "2", "3", "4", "5", "6", "7", "8", "oldest", "oldest"});
+                    graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+                }
             }
 
 

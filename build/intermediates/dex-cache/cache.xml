@@ -2,13 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Elizabeth/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.7.5/b3ae78e05ff9fdb1788db2056b583281ef684277/okhttp-urlconnection-2.7.5.jar"
+        jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="cb2b495015a74daacecda9b13eab955836067b4a">
-        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8f5dbf80b81aa971f56086752f015acc30857cd6/classes.dex" />
+        sha1="b3ae78e05ff9fdb1788db2056b583281ef684277">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.7.5_721fdea61d47a9b877a62bbfbae4bb9dd3076c56.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0_d65ae228fe74d2885a1d08fb8e70820bd925f572.jar" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +27,60 @@
         revision="26.0.1"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d66af1b6b2fee957649556d029800d0e82779a0d/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/UpPlatformSdk/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="aafda0048c42cc611c87d8ae08c8c12dbb055ee5">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/classes_7b6842e58512a101669051d03904e1c0edf74a19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/.android/build-cache/54f54f43f7c2450add3e07517bf8d20e396f452e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="987adec819c9a98faf215814f41195da48fc724e">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/classes_c92c8e1b40eeb30dec760b3dedf249ef4b23a2d4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7ecc108fe94cfd5551c98bc8d98e069a7f67bbf3">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8f5dbf80b81aa971f56086752f015acc30857cd6/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.5/7a15a7db50f86c4b64aa3367424a60e3a325b8f1/okhttp-2.7.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7a15a7db50f86c4b64aa3367424a60e3a325b8f1">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/okhttp-2.7.5_05f2dc241f3d98f48e7bdbe8383edd7d7b51ab9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.7.0/1dc44f4cec20a64cebb68b90b4218f82ac7948b1/okio-1.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="1dc44f4cec20a64cebb68b90b4218f82ac7948b1">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/okio-1.7.0_1fefbf04d3f647c70f12559a6988386d4cecf309.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Elizabeth/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/f1bc476cc167b18e66c297df599b2377131a8947/gson-2.6.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="/Users/Elizabeth/Documents/jawboneP/PDM_Life2/app/build/intermediates/pre-dexed/debug/gson-2.6.2_d2bb4731368be719c310963b83be7b08894fc039.jar" />
     </item>
 
 </items>

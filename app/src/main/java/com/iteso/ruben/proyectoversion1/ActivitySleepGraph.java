@@ -13,6 +13,8 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LabelFormatter;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.Series;
 
@@ -109,7 +111,9 @@ public class ActivitySleepGraph extends AppCompatActivity {
                 graphView.setTitle("Sleep Time Graph");
                 graphView.setTitleTextSize(40);
                 graphView.setTitleColor(R.color.text_c);
-
+                StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
+                staticLabelsFormatter.setHorizontalLabels(new String[] {"newest", "2", "3", "4", "5", "6", "7", "8", "oldest", "oldest"});
+                graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
             }else{
                 graphView.setTitle(getString(R.string.sleep_graph_no_data_message));
             }

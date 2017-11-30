@@ -43,10 +43,10 @@ public class ActivityWelcome extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
-        viewPager   = findViewById(R.id.activity_welcome_view_pager);
-        btnSkip     = findViewById(R.id.activity_welcome_btn_skip);
-        btnNext     = findViewById(R.id.activity_welcome_btn_next);
-        dotsLayout  = findViewById(R.id.activity_welcome_layoutDots);
+        viewPager   =(ViewPager) findViewById(R.id.activity_welcome_view_pager);
+        btnSkip     = (Button) findViewById(R.id.activity_welcome_btn_skip);
+        btnNext     = (Button)findViewById(R.id.activity_welcome_btn_next);
+        dotsLayout  = (LinearLayout)findViewById(R.id.activity_welcome_layoutDots);
 
         layouts = new int[]{
             R.layout.welcome_slide0,
@@ -154,7 +154,7 @@ public class ActivityWelcome extends AppCompatActivity {
                 btnSkip.setVisibility(View.VISIBLE);
             }
 
-            img = findViewById(images[position]);
+            img = (ImageView) findViewById(images[position]);
             img.post(new ImgAnim());
 
         }

@@ -23,7 +23,7 @@ public class ActivitySplash extends AppCompatActivity {
             //mainIntent.putExtra("USER", myUser);
         }else{
             mainIntent = new Intent().setClass(ActivitySplash.this,
-                    ActivityGetUserDAta.class);
+                    ActivityWelcome.class);
         }
 
         startActivity(mainIntent);

@@ -77,7 +77,7 @@ public class ActivityWater extends AppCompatActivity {
         back_button = (ImageButton) findViewById(R.id.activity_water_back_button);
         myDrink_button = (Button) findViewById(R.id.myDrink_button);
         tv_left = (TextView) findViewById(R.id.text_waterprogr);
-        tv_completions = findViewById(R.id.activity_water_textview_completions);
+        tv_completions = (TextView)findViewById(R.id.activity_water_textview_completions);
 
         topMl = (int) (weight * (age < 30 ? 0.03 :
                                 age < 55 ? 0.025:

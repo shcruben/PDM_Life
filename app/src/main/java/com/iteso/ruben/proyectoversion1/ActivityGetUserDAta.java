@@ -1,11 +1,13 @@
 package com.iteso.ruben.proyectoversion1;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -88,7 +90,7 @@ public class ActivityGetUserDAta extends AppCompatActivity {
             public void onClick(View view) {
                // Intent select_intent = new Intent(ActivityGetUserDAta.this, HelloUpActivity.class);
                // startActivity(select_intent);
-               // finish();
+                finish();
             }
         });
 
@@ -120,7 +122,8 @@ public class ActivityGetUserDAta extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_logout_button:
-                clearPreferences();
+
+                areYouSure();
 
                 break;
         }
@@ -128,10 +131,30 @@ public class ActivityGetUserDAta extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    protected void areYouSure(){
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("Are you sure?");
+        alertBuilder.setMessage("If you logout all your local data will be erased ").setCancelable(false)
+                .setPositiveButton("Clear", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        clearPreferences();
+
+                    }
+                }).setNegativeButton("Back",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                    });
+        AlertDialog alertDialog = alertBuilder.create();
+        alertBuilder.show();
+    }
     //  @RequiresApi(api = Build.VERSION_CODES.N)
     protected void clearPreferences(){
+
+
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.USER_PREFRENCES,
                 Context.MODE_PRIVATE);
+
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear().commit();

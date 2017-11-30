@@ -45,31 +45,46 @@
             android:name=".ActivityWater"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelloUpActivity">
-            <intent-filter>
+
+        <activity android:name=".HelloUpActivity"
+            android:screenOrientation="portrait">
+
                 <action android:name="com.jawbone.helloup.HelloUpActivity" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+              />
+
         </activity>
+
         <activity
             android:name=".ActivitySplash"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ActivityJawbone" />
+            android:screenOrientation="portrait" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".ActivityJawbone"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".ActivityMove"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ActivityWelcome">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ActivityWelcome"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
         <activity
             android:name=".ActivitySettings"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".ActivityHeartRateMonitor"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
